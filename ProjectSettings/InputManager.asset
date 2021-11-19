@@ -299,8 +299,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: a
     positiveButton: d
-    altNegativeButton: 
-    altPositiveButton: joystick button 1
+    altNegativeButton: left
+    altPositiveButton: right
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -316,7 +316,7 @@ InputManager:
     negativeButton: q
     positiveButton: e
     altNegativeButton: 
-    altPositiveButton: joystick button 1
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -329,10 +329,10 @@ InputManager:
     m_Name: Pitch
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: s
     positiveButton: w
-    altNegativeButton: s
-    altPositiveButton: joystick button 1
+    altNegativeButton: down
+    altPositiveButton: up
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

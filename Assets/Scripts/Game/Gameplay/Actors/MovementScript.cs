@@ -6,8 +6,8 @@ public class MovementScript : MonoBehaviour
 {
 
     public float AmbientSpeed = 100.0f;
-
     public float RotationSpeed = 100.0f;
+    public float accel = 200.0f;
 
     private Rigidbody _rigidBody;
 
@@ -43,6 +43,11 @@ public class MovementScript : MonoBehaviour
         _rigidBody.rotation *= AddRot;
         Vector3 AddPos = Vector3.forward;
         AddPos = _rigidBody.rotation * AddPos;
-        _rigidBody.velocity = AddPos * (Time.fixedDeltaTime * AmbientSpeed * 100);
+
+        float speed = Input.GetKeyDown("space") ? AmbientSpeed + accel : AmbientSpeed;
+
+        Debug.Log(speed);
+
+        _rigidBody.velocity = AddPos * (Time.fixedDeltaTime * speed * 100);
     }
 }
