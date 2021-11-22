@@ -21,9 +21,14 @@ namespace MFlight.Demo
         [SerializeField] private MouseFlightController controller = null;
 
         [Header("Physics")]
+        [Tooltip("Max velocity")] public float maxVelocity = 1000f;
         [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
+        private float actualThrust = 0;
+        [Tooltip("Acceleration of aircraft")] public float acceleration = 100f;
+        [Tooltip("Drag of aircraft")] public float dragRate = 30f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
+
 
         [Header("Autopilot")]
         [Tooltip("Sensitivity for autopilot flight.")] public float sensitivity = 5f;
@@ -49,6 +54,8 @@ namespace MFlight.Demo
 
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+
+            actualThrust = thrust;
         }
 
         private void Update()
@@ -131,9 +138,29 @@ namespace MFlight.Demo
 
         private void FixedUpdate()
         {
+            if (Input.GetAxis("Acceleration") > 0 && actualThrust < maxVelocity)
+            {
+                actualThrust += acceleration;
+            }
+
+            if (Input.GetAxis("Acceleration") < 0 && actualThrust > 0)
+            {
+                actualThrust -= acceleration;
+            }
+
+            if (Input.GetAxis("Acceleration") == 0) {
+                if (actualThrust < thrust) {
+                    actualThrust += acceleration;
+                } else if (actualThrust > thrust) {
+                    actualThrust -= acceleration;
+                }
+            }
+
+            Debug.Log(actualThrust);
+
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
-            rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
+            rigid.AddRelativeForce(Vector3.forward * actualThrust * forceMult, ForceMode.Force);
             rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
                                                 turnTorque.y * yaw,
                                                 -turnTorque.z * roll) * forceMult,
