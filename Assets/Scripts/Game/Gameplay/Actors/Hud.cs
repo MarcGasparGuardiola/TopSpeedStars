@@ -4,8 +4,9 @@
 //
 
 using UnityEngine;
+using Gameplay.controllers;
 
-namespace MFlight.Demo
+namespace Gameplay.actors
 {
     public class Hud : MonoBehaviour
     {
