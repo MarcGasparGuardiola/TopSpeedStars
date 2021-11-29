@@ -59,8 +59,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4145331850755762}
-  - {fileID: 7188510067846523578}
-  - {fileID: 2373419192472169039}
+  - {fileID: 529642822160034108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,12 +110,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024709598543569831}
-  m_LocalRotation: {x: -0.25516775, y: -0.11193865, z: 0.029757157, w: -0.95993423}
-  m_LocalPosition: {x: -222.49806, y: 191.397, z: 58.14999}
+  m_LocalRotation: {x: 0.11123302, y: 0.00000002961738, z: -0.0000000033150023, w: 0.9937944}
+  m_LocalPosition: {x: -1, y: 31.229431, z: -135.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4614794542237088}
-  m_RootOrder: 1
+  m_Father: {fileID: 529642822160034108}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7258118787168905727
 Camera:
@@ -203,6 +202,38 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4004546980038459661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529642822160034108}
+  m_Layer: 0
+  m_Name: CamRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529642822160034108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004546980038459661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7188510067846523578}
+  - {fileID: 2373419192472169039}
+  m_Father: {fileID: 4614794542237088}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6190541550499366877
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +357,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8513402734086623517}
-  m_Father: {fileID: 4614794542237088}
-  m_RootOrder: 2
+  m_Father: {fileID: 529642822160034108}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1284776605282472772
 MonoBehaviour:
