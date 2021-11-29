@@ -28,7 +28,7 @@ namespace MFlight.Demo
         [Tooltip("Drag of aircraft")] public float dragRate = 30f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
-
+        [Tooltip("Inertia tensors (x, y ,z)")] public Vector3 tensor = new Vector3(2000f, 2300f, 352f); 
 
         [Header("Autopilot")]
         [Tooltip("Sensitivity for autopilot flight.")] public float sensitivity = 5f;
@@ -38,6 +38,8 @@ namespace MFlight.Demo
         [SerializeField] [Range(-1f, 1f)] private float pitch = 0f;
         [SerializeField] [Range(-1f, 1f)] private float yaw = 0f;
         [SerializeField] [Range(-1f, 1f)] private float roll = 0f;
+
+
 
         public float Pitch { set { pitch = Mathf.Clamp(value, -1f, 1f); } get { return pitch; } }
         public float Yaw { set { yaw = Mathf.Clamp(value, -1f, 1f); } get { return yaw; } }
@@ -54,6 +56,10 @@ namespace MFlight.Demo
 
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+
+            rigid.inertiaTensor = tensor;
+            rigid.velocity = new Vector3(400, 0, 0);
+
 
             actualThrust = thrust;
         }
@@ -161,6 +167,7 @@ namespace MFlight.Demo
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
             rigid.AddRelativeForce(Vector3.forward * actualThrust * forceMult, ForceMode.Force);
+
             rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
                                                 turnTorque.y * yaw,
                                                 -turnTorque.z * roll) * forceMult,
