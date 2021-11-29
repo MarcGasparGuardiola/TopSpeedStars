@@ -4,14 +4,18 @@ using UnityEngine;
 
 namespace Gameplay.actors
 {
-    public class LogConsumable : MonoBehaviour, IConsumable
+    public class LogConsumable : Consumable
     {
+        private string NAME = "LogConsumable";
         public LogConsumable()
         {
             Debug.Log("Item Created");
         }
-
-        public void Consume(Plane target)
+        override public string GetName()
+        {
+            return this.NAME;
+        }
+        override public void Consume(Player target)
         {
             Debug.Log("Item Used");
             target.GetComponent<Rigidbody>().transform.position = new Vector3(0,0,0);

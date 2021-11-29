@@ -5,10 +5,12 @@ using UnityEngine;
 namespace Gameplay.actors
 {
     // This interface must be implemented by every consumable. They must have a consume action
-    public interface IConsumable
+    public abstract class Consumable : MonoBehaviour
     {
+        private string NAME;
+        public abstract string GetName();
         // This method will be activated when the player uses its item
-        public void Consume(Plane target);
+        public abstract void Consume(Player target);
     }
 }
 
