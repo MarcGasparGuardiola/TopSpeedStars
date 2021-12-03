@@ -58,7 +58,7 @@ namespace MFlight.Demo
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
 
             rigid.inertiaTensor = tensor;
-            rigid.velocity = new Vector3(400, 0, 0);
+            rigid.velocity = new Vector3(0, 0, 0);
 
 
             actualThrust = thrust;
@@ -162,7 +162,8 @@ namespace MFlight.Demo
                 }
             }
 
-            //Debug.Log(actualThrust);
+
+            Debug.Log(actualThrust);
 
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
