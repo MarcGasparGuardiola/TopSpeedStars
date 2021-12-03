@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Gameplay.hud;
 
 namespace Gameplay.actors
 {
-    public class Player : Plane
+    public class Player : MonoBehaviour
     {
 
-        private IConsumable item;
-
+        [SerializeField] private Consumable item = null;
+        [SerializeField] private string name = ""; // For future instances where the player's username is displayed
+        [SerializeField] private ConsumableHud cHud = null;
+ 
         // Start is called before the first frame update
         void Start()
         {
             this.item = null;
+            
         }
 
         // Update is called once per frame
@@ -29,12 +31,14 @@ namespace Gameplay.actors
         {
             if (other.gameObject.CompareTag("PickUp"))
             {
-                other.gameObject.SetActive(false);
+                // other.gameObject.SetActive(false);
                 Debug.Log("PickUp");
                 if (this.item == null)
                 {
                     // TODO random select consumible
                     this.item = new LogConsumable();
+                    cHud.SetConsumableIndicator(this.item);
+
                 }  
             }
         }
@@ -47,6 +51,7 @@ namespace Gameplay.actors
                 item = null;
             }
         }
+        
     }
 
 }
