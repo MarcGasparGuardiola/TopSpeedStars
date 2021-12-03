@@ -29,15 +29,19 @@ namespace Gameplay.actors
         {
             if (other.gameObject.CompareTag("PickUp") || other is PickUp)
             {
-                // other.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
                 Debug.Log("PickUp");
                 if (this.item == null)
                 {
                     // TODO random select consumible
-                    this.item = new LogConsumable();
-                    cHud.SetConsumableIndicator(this.item);
+                    item = this.gameObject.AddComponent<LogConsumable>();
+                    //cHud.SetConsumableIndicator(this.item);
 
                 }  
+            }
+            if (other.gameObject.CompareTag("Checkpoint"))
+            {
+                Debug.Log("Checkpoint");
             }
         }
         private void UseItem()
