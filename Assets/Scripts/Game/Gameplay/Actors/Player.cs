@@ -27,21 +27,23 @@ namespace Gameplay.actors
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PickUp") || other is PickUp)
+            if (other.gameObject.CompareTag("PickUp"))
             {
-                other.gameObject.SetActive(false);
+                // TODO Use PickUP function
+                other.GetComponent<PickUp>().TimeOut();
                 Debug.Log("PickUp");
                 if (this.item == null)
                 {
                     // TODO random select consumible
-                    item = this.gameObject.AddComponent<LogConsumable>();
+                    item = this.gameObject.AddComponent<TurboConsumable>();
                     //cHud.SetConsumableIndicator(this.item);
 
                 }  
             }
             if (other.gameObject.CompareTag("Checkpoint"))
             {
-                Debug.Log("Checkpoint");
+                // Debug.Log("Checkpoint");
+                other.GetComponent<CheckPoint>().Check();
             }
         }
         private void UseItem()

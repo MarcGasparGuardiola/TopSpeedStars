@@ -7,7 +7,7 @@ namespace Gameplay.actors
     public class LaserConsumable : Consumable
     {
 
-        private string NAME = "LaserConsumable";
+        private new string NAME = "LaserConsumable";
         public LaserConsumable()
         
 
