@@ -5,15 +5,13 @@ namespace Gameplay.actors
 {
     public class Player : MonoBehaviour
     {
-
         [SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
- 
         // Start is called before the first frame update
         void Start()
         {
-            this.item = null;
+            //this.item = null;
             
         }
 
@@ -29,17 +27,21 @@ namespace Gameplay.actors
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PickUp"))
+            if (other.gameObject.CompareTag("PickUp") || other is PickUp)
             {
-                // other.gameObject.SetActive(false);
+                other.gameObject.SetActive(false);
                 Debug.Log("PickUp");
                 if (this.item == null)
                 {
                     // TODO random select consumible
-                    this.item = new LogConsumable();
-                    cHud.SetConsumableIndicator(this.item);
+                    item = this.gameObject.AddComponent<LogConsumable>();
+                    //cHud.SetConsumableIndicator(this.item);
 
                 }  
+            }
+            if (other.gameObject.CompareTag("Checkpoint"))
+            {
+                Debug.Log("Checkpoint");
             }
         }
         private void UseItem()
