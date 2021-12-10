@@ -4,9 +4,14 @@ using UnityEngine;
 
 namespace Gameplay.actors
 {
+
     public class CheckPoint : MonoBehaviour
     {
-        // TODO
+        public void Check()
+        {
+            // TODO canviar color
+        }
     }
+    
 }
 

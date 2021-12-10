@@ -163,7 +163,7 @@ namespace MFlight.Demo
             }
 
 
-            Debug.Log(actualThrust);
+            // Debug.Log(actualThrust);
 
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.

@@ -9,7 +9,7 @@ namespace Gameplay.actors
         public LogConsumable()
         {
             this.NAME = "LogConsumable";
-            Debug.Log("Item Created");
+            // Debug.Log("Item Created");
         }
         override public string GetName()
         {
