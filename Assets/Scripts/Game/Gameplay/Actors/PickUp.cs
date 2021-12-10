@@ -9,7 +9,11 @@ namespace Gameplay.actors
         private void Start()
         {}
 
+        public void timeOut(Collider collider)
+        {
+            // TODO time out avaliability of pickup
 
+        }
     }
 }
 
