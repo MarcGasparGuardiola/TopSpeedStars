@@ -9,7 +9,7 @@ namespace Gameplay.actors
         [Header("Components")]
         [SerializeField]
         [Tooltip("Transform of the aircraft the rig follows and references")]
-        private float turboForce = 10.0f;
+        private float turboForce = 250.0f;
 
         public TurboConsumable()
         {
