@@ -7,6 +7,7 @@ namespace Gameplay.actors
 
     public class CheckPoint : MonoBehaviour
     {
+        public bool isChecked;
         public void Check()
         {
             // TODO canviar color

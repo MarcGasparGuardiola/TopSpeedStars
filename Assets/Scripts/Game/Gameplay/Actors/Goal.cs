@@ -30,5 +30,10 @@ namespace Gameplay.actors
                 winner = other.GetComponent<Player>();
             }
         }
+
+        private void EndRace()
+        {
+            // TODO Create and call endRace function on race script
+        }
     }
 }
