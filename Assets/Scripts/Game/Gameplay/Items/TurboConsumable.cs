@@ -9,7 +9,7 @@ namespace Gameplay.actors
         [Header("Components")]
         [SerializeField]
         [Tooltip("Transform of the aircraft the rig follows and references")]
-        private float turboForce = 100.0f;
+        private float turboForce = 250.0f;
 
         public TurboConsumable()
         {
@@ -42,7 +42,7 @@ namespace Gameplay.actors
             for (int i = 0; i < 10; i++)
             {
                 // target.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * turboForce);
-                target.GetComponent<Rigidbody>().velocity += new Vector3(0, 0, 1 * turboForce * 0.5f);
+                target.GetComponent<Rigidbody>().velocity += transform.forward * turboForce;
                 Debug.Log(target.GetComponent<Rigidbody>().velocity);
                 yield return null;
             }

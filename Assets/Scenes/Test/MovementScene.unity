@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NAME: TurboConsumable
-  turboForce: 1000
+  turboForce: 750
 --- !u!1001 &1706064625097630319
 PrefabInstance:
   m_ObjectHideFlags: 0
