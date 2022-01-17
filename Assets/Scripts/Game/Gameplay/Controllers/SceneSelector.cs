@@ -11,4 +11,9 @@ public class SceneSelector : MonoBehaviour
         Debug.Log("Clicked");
         SceneManager.LoadScene("PlaneSelection");
     }
+
+    public static void goToResultList()
+    {
+        SceneManager.LoadScene("ResultList");
+    }
 }

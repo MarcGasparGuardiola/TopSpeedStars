@@ -9,12 +9,14 @@ namespace Gameplay.controllers
 {
     public class RaceController : MonoBehaviour
     {
+        public static List<Player> raceFinishOrder;
         public Goal goal;
         public List<CheckPoint> checkPoints;
         float time = 0f;
         public Text timeText;
         void Start()
         {
+            raceFinishOrder = new List<Player>();
             // TODO start race and timer
         }
 
@@ -52,6 +54,8 @@ namespace Gameplay.controllers
         {
             // TODO finish the race
             player.SetFinishTime(time);
+            raceFinishOrder.Add(player);
+            SceneSelector.goToResultList();
         }
 
         void DisplayTime(float time)
