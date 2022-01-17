@@ -275,6 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 1221746447156555886}
     - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
+      propertyPath: cameraRig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
       propertyPath: showDebugInfo
       value: 0
       objectReference: {fileID: 0}
@@ -327,6 +332,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -1.7322633e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373419192472169039, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 3.4626903e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373419192472169039, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11123303
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373419192472169039, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -3.5086201e-15
       objectReference: {fileID: 0}
     - target: {fileID: 2373419192472169039, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
@@ -438,6 +458,21 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 7188510067846523578, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11123303
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188510067846523578, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -3.5086201e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188510067846523578, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 3.4626903e-16
+      objectReference: {fileID: 0}
     - target: {fileID: 9023536574353921906, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
       propertyPath: m_TrackedObjectOffset.z
@@ -524,9 +559,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 114491796399247544, guid: 16580bf03b0b2cd43a91d480153f3fa0,
         type: 3}
+      propertyPath: mousePos
+      value: 
+      objectReference: {fileID: 1492601875159604440}
+    - target: {fileID: 114491796399247544, guid: 16580bf03b0b2cd43a91d480153f3fa0,
+        type: 3}
+      propertyPath: boresight
+      value: 
+      objectReference: {fileID: 1491168513088910594}
+    - target: {fileID: 114491796399247544, guid: 16580bf03b0b2cd43a91d480153f3fa0,
+        type: 3}
       propertyPath: mouseFlight
       value: 
-      objectReference: {fileID: 1601964117085345200}
+      objectReference: {fileID: 0}
     - target: {fileID: 224313560478563200, guid: 16580bf03b0b2cd43a91d480153f3fa0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -617,8 +662,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114491796399247544, guid: 16580bf03b0b2cd43a91d480153f3fa0, type: 3}
+    m_RemovedComponents: [{fileID: 114491796399247544, guid: 16580bf03b0b2cd43a91d480153f3fa0,
+        type: 3}]
   m_SourcePrefab: {fileID: 100100000, guid: 16580bf03b0b2cd43a91d480153f3fa0, type: 3}
 --- !u!1 &1704762588123741270 stripped
 GameObject:
