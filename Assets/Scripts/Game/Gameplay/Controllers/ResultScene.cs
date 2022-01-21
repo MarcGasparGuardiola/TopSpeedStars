@@ -11,19 +11,14 @@ namespace Gameplay.controllers
         static public List<(string, float)> finishedPlayers = new List<(string, float)>();
         // Start is called before the first frame update
         private List<(string, float)> localFinishList;
-        private GameObject rowTemplate;
+        static private GameObject rowTemplate;
+        private GameObject list;
 
         void Start()
         {
             localFinishList = finishedPlayers;
-            if (RaceController.finishList != null)
-            {
-                localFinishList = finishedPlayers;
-            }
-            else {
-                localFinishList = new List<(string, float)>();
-            }
-            
+
+            list = GameObject.FindGameObjectsWithTag("List")[0];
             rowTemplate = GameObject.FindGameObjectsWithTag("Row")[0];
             
 
@@ -38,24 +33,34 @@ namespace Gameplay.controllers
         // Update is called once per frame
         void Update()
         {
+            Debug.Log(finishedPlayers.Count);
+            Debug.Log(localFinishList.Count);
+
             if (finishedPlayers.Count != localFinishList.Count)
             {
+                Debug.Log("Lists count different re-creating list");
                 createFinishList();
             }
         }
 
+       static public void addTime(string name, float time)
+        {
+            finishedPlayers.Add((name, time));
+        }
+
        private void createFinishList()
         {
-            localFinishList = finishedPlayers;
+            Debug.Log("List Created");
             GameObject g;
-            foreach ( (string name, float time) in localFinishList)
+            foreach ( (string name, float time) in finishedPlayers)
             {
-                g = Instantiate(rowTemplate, transform);
+                g = Instantiate(rowTemplate, list.transform);
                 g.transform.GetChild(0).GetComponent<Text>().text = name;
                 float min = Mathf.FloorToInt(time / 60);
                 float sec = time % 60;
                 string playerTime = string.Format("{0:00}:{1}", min, sec.ToString());
                 g.transform.GetChild(1).GetComponent<Text>().text = playerTime;
+                Destroy(g);
             }
         }
     }

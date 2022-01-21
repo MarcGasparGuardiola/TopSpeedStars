@@ -15,10 +15,8 @@ namespace Gameplay.controllers
         float time = 0f;
         public Text timeText;
 
-        static public List<Player> finishList;
         void Start()
         {
-            finishList = new List<Player>();
             // TODO start race and timer
         }
 
@@ -56,8 +54,7 @@ namespace Gameplay.controllers
         {
             // TODO finish the race
             player.SetFinishTime(time);
-            finishList.Add(player);
-            ResultScene.finishedPlayers.Add((player.name, player.time));
+            ResultScene.addTime(player.name, player.time);
             SceneSelector.goToFinishRaceScene();
         }
 

@@ -22,7 +22,7 @@ public class TestFunctions : MonoBehaviour
 
     public void addPlayerToFinishList()
     {
-
+        Debug.Log("Dumy Player created");
         System.Random rand = new System.Random();
         float randomFloat = (float)rand.NextDouble();
         
