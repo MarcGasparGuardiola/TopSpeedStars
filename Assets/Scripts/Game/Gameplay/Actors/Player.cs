@@ -8,12 +8,12 @@ namespace Gameplay.actors
     public class Player : MonoBehaviour
     {
         [SerializeField] private Consumable item = null;
-        [SerializeField] private string name = ""; // For future instances where the player's username is displayed
+        [SerializeField] public string name = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
         internal CheckPoint check = null;
         public RaceController raceController = null;
         public PointerController pointer;
-        float time;
+        public float time;
         public Text finishText;
         // Start is called before the first frame update
         void Start()
@@ -93,6 +93,7 @@ namespace Gameplay.actors
         }
         internal void SetFinishTime(float time)
         {
+            this.time = time;
             float min = Mathf.FloorToInt(time / 60);
             float sec = time % 60;
             finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());

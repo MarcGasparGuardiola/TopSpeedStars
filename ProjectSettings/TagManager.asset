@@ -7,6 +7,8 @@ TagManager:
   - PickUp
   - Checkpoint
   - Collision
+  - Row
+  - List
   layers:
   - Default
   - TransparentFX
