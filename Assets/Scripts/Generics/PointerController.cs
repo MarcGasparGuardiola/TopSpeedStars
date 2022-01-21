@@ -8,7 +8,7 @@ namespace Gameplay.controllers
     public class PointerController : MonoBehaviour
     {
         public Player player;
-        private CheckPoint currentCheck;
+        public CheckPoint currentCheck;
         public GameObject pointer;
         // Update is called once per frame
 

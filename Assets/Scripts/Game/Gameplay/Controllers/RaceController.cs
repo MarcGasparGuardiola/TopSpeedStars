@@ -16,6 +16,15 @@ namespace Gameplay.controllers
         void Start()
         {
             // TODO start race and timer
+            foreach (GameObject c in GameObject.FindGameObjectsWithTag("Checkpoint"))
+            {
+                checkPoints.Add(c.GetComponent<CheckPoint>());
+            }
+            checkPoints.Sort(delegate (CheckPoint x, CheckPoint y)
+            {
+                return x.id - y.id;
+            });
+            InitializePlayer(FindObjectOfType<Player>());
         }
 
         void Update()

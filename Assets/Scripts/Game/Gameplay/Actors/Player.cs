@@ -10,7 +10,7 @@ namespace Gameplay.actors
         [SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
-        internal CheckPoint check = null;
+        public CheckPoint check = null;
         public RaceController raceController = null;
         public PointerController pointer;
         float time;
@@ -18,13 +18,7 @@ namespace Gameplay.actors
         // Start is called before the first frame update
         void Start()
         {
-            // TODO set raceController dinamically
-            raceController.InitializePlayer(this);
-            try
-            {
-                pointer.SetCheck(check);
-            }
-            catch { }
+            // TODO set model dinamically
         }
 
         // Update is called once per frame

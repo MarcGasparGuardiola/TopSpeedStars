@@ -7,6 +7,11 @@ namespace Gameplay.controllers
 {
     public class MultiplayerController : RaceController
     {
+        private (Player, float) classification;
+        internal new void Finish(Player player)
+        {
+
+        }
     }
 }
 

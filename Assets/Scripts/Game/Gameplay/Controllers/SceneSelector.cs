@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneSelector : MonoBehaviour
 {
     // Start is called before the first frame update
-   public void goToPlaneSelectionScene()
+   public void goToPlaneSelectionScene(string scene)
     {
         Debug.Log("Clicked");
-        SceneManager.LoadScene("PlaneSelection");
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
