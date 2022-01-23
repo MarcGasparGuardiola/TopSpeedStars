@@ -10,21 +10,18 @@ namespace Gameplay.controllers
     {
         static public List<(string, float)> finishedPlayers = new List<(string, float)>();
         // Start is called before the first frame update
-        private List<(string, float)> localFinishList;
-        static private GameObject rowTemplate;
+        [SerializeField] private GameObject rowTemplate;
         private GameObject list;
+        private int localCount;
+        
 
         void Start()
         {
-            localFinishList = finishedPlayers;
+            localCount = finishedPlayers.Count;
 
             list = GameObject.FindGameObjectsWithTag("List")[0];
-            rowTemplate = GameObject.FindGameObjectsWithTag("Row")[0];
-            
 
             Debug.Log("-----TEST-----");
-            Debug.Log(localFinishList);
-            Debug.Log(localFinishList.Count);
             Debug.Log(finishedPlayers.Count); 
             Debug.Log("----------");
             createFinishList();
@@ -34,12 +31,12 @@ namespace Gameplay.controllers
         void Update()
         {
             Debug.Log(finishedPlayers.Count);
-            Debug.Log(localFinishList.Count);
 
-            if (finishedPlayers.Count != localFinishList.Count)
+            if (localCount != finishedPlayers.Count)
             {
                 Debug.Log("Lists count different re-creating list");
                 createFinishList();
+                localCount = finishedPlayers.Count;
             }
         }
 
@@ -50,17 +47,35 @@ namespace Gameplay.controllers
 
        private void createFinishList()
         {
+            destroyList();
+
             Debug.Log("List Created");
+            
             GameObject g;
+            int pos = 1;
             foreach ( (string name, float time) in finishedPlayers)
             {
                 g = Instantiate(rowTemplate, list.transform);
-                g.transform.GetChild(0).GetComponent<Text>().text = name;
+
+                g.transform.GetChild(0).GetComponent<Text>().text = "#" + pos.ToString();
+                ++pos;
+
+                g.transform.GetChild(1).GetComponent<Text>().text = name;
+
                 float min = Mathf.FloorToInt(time / 60);
                 float sec = time % 60;
                 string playerTime = string.Format("{0:00}:{1}", min, sec.ToString());
-                g.transform.GetChild(1).GetComponent<Text>().text = playerTime;
-                Destroy(g);
+                g.transform.GetChild(2).GetComponent<Text>().text = playerTime;
+               
+                g.SetActive(true);
+            }
+            // Destroy(rowTemplate);
+        }
+        private void destroyList()
+        {
+            for (int i = 1; i < list.transform.childCount; i++)
+            {
+                GameObject.Destroy(list.transform.GetChild(i).gameObject);
             }
         }
     }
