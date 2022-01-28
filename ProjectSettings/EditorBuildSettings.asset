@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/MovementScene.unity
     guid: 0d00ab3c5d2fe634483126e83825ae9e
   - enabled: 1
-    path: Assets/Scenes/GUI/PlaneSelection.unity
+    path: Assets/Scenes/GUI/PlaneSelectionScene.unity
     guid: 650b1fd717dc81d4ca5a2ba902e6ced9
   m_configObjects: {}
