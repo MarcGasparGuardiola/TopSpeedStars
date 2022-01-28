@@ -55,7 +55,11 @@ namespace Gameplay.controllers
             // TODO finish the race
             player.SetFinishTime(time);
             ResultScene.addTime(player.name, player.time);
-            SceneSelector.goToFinishRaceScene();
+            // SceneSelector.goToFinishRaceScene();
+
+            GameObject go = GameObject.Find("LevelChanger");
+            LevelChanger other = (LevelChanger)go.GetComponent(typeof(LevelChanger));
+            other.FadeToLevel("ResultsList");
         }
 
         void DisplayTime(float time)
