@@ -6,9 +6,22 @@ using UnityEngine.SceneManagement;
 public class SceneSelector : MonoBehaviour
 {
     // Start is called before the first frame update
-   public void goToPlaneSelectionScene(string scene)
+   public void goToScene(string scene)
     {
         Debug.Log("Clicked");
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        StartCoroutine(LoadAsync(scene));
+        
+        // SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
+
+    IEnumerator LoadAsync(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        Debug.Log("Loading");
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }

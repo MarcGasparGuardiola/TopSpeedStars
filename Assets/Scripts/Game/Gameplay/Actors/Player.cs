@@ -15,15 +15,22 @@ namespace Gameplay.actors
         public PointerController pointer;
         float time;
         public Text finishText;
+        public static Character character;
         // Start is called before the first frame update
         void Start()
         {
             // TODO set model dinamically
+            GameObject prefab = Resources.Load(character.route) as GameObject;
+            Debug.Log(character.route);
+            GameObject instance = Instantiate(prefab);
+            instance.transform.parent = this.transform;
+            
         }
 
         // Update is called once per frame
         void Update()
         {
+            
             // consume, TODO input adequat
             if (Input.GetKeyDown(KeyCode.I))
             {
@@ -91,6 +98,8 @@ namespace Gameplay.actors
             float sec = time % 60;
             finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());
         }
+
+
     }
 
 }
