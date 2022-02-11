@@ -23,6 +23,7 @@ namespace Gameplay.actors
             GameObject prefab = Resources.Load(character.route) as GameObject;
             Debug.Log(character.route);
             GameObject instance = Instantiate(prefab);
+            instance.transform.localScale = Vector3.one * 7.5f;
             instance.transform.parent = this.transform;
             
         }

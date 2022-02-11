@@ -518,7 +518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621757980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1414696977}
@@ -820,6 +820,11 @@ PrefabInstance:
       propertyPath: cameraRig
       value: 
       objectReference: {fileID: 292805584}
+    - target: {fileID: 1601964117085345200, guid: 261c069ab14ebc644b25d0c5a473eba3,
+        type: 3}
+      propertyPath: aimDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1618985782762956672, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: character
@@ -962,6 +967,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737949104366518858, guid: 261c069ab14ebc644b25d0c5a473eba3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167282651158205440, guid: 261c069ab14ebc644b25d0c5a473eba3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6732100793883122370, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}

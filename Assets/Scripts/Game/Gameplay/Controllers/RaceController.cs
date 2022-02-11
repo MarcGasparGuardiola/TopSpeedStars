@@ -67,7 +67,7 @@ namespace Gameplay.controllers
         {
             float min = Mathf.FloorToInt(time / 60);
             float sec = time % 60;
-           // timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
+            timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
         }
     }
 }
