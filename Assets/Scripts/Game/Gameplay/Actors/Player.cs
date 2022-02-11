@@ -1,13 +1,13 @@
 using UnityEngine;
-using Gameplay.hud;
+//using Gameplay.hud;
 
 namespace Gameplay.actors
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private Consumable item = null;
+        //[SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
-        [SerializeField] private ConsumableHud cHud = null;
+        //[SerializeField] private ConsumableHud cHud = null;
         // Start is called before the first frame update
         void Start()
         {
@@ -31,10 +31,10 @@ namespace Gameplay.actors
             {
                 other.gameObject.SetActive(false);
                 Debug.Log("PickUp");
-                if (this.item == null)
+                //if (this.item == null)
                 {
                     // TODO random select consumible
-                    item = this.gameObject.AddComponent<LogConsumable>();
+                    //item = this.gameObject.AddComponent<LogConsumable>();
                     //cHud.SetConsumableIndicator(this.item);
 
                 }  
@@ -46,11 +46,11 @@ namespace Gameplay.actors
         }
         private void UseItem()
         {
-            if (item != null)
+            //if (item != null)
             {
                 // TODO determine if item is boost
-                item.Consume(this);
-                item = null;
+               // item.Consume(this);
+                //item = null;
             }
         }
         
