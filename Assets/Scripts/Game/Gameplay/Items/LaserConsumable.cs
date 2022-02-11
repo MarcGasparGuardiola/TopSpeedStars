@@ -1,13 +1,13 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 namespace Gameplay.actors
 {
     public class LaserConsumable : Consumable
     {
 
-        private string NAME = "LaserConsumable";
+        private new string NAME = "LaserConsumable";
         public LaserConsumable()
 
             //Codi copiat 
@@ -77,9 +77,6 @@ namespace Gameplay.actors
             if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 100.0f))
                 print("Found an object - distance: " + hit.distance);
         }
-        
-        
-           
-        
     }
 }
+*/

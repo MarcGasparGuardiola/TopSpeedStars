@@ -1,5 +1,7 @@
 using UnityEngine;
-//using Gameplay.hud;
+using UnityEngine.UI;
+using Gameplay.hud;
+using Gameplay.controllers;
 
 namespace Gameplay.actors
 {
@@ -7,12 +9,17 @@ namespace Gameplay.actors
     {
         //[SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
-        //[SerializeField] private ConsumableHud cHud = null;
+        [SerializeField] private ConsumableHud cHud = null;
         // Start is called before the first frame update
         void Start()
         {
-            //this.item = null;
-            
+            // TODO set raceController dinamically
+            raceController.InitializePlayer(this);
+            try
+            {
+                pointer.SetCheck(check);
+            }
+            catch { }
         }
 
         // Update is called once per frame
@@ -31,19 +38,20 @@ namespace Gameplay.actors
             {
                 other.gameObject.SetActive(false);
                 Debug.Log("PickUp");
-                //if (this.item == null)
+                if (this.item == null)
                 {
                     // TODO random select consumible
-                    //item = this.gameObject.AddComponent<LogConsumable>();
+                    item = this.gameObject.AddComponent<LogConsumable>();
                     //cHud.SetConsumableIndicator(this.item);
 
                 }  
             }
             if (other.gameObject.CompareTag("Checkpoint"))
             {
-                Debug.Log("Checkpoint");
+                this.EnterCheckpoint(other);
             }
         }
+
         private void UseItem()
         {
             //if (item != null)
@@ -53,7 +61,44 @@ namespace Gameplay.actors
                 //item = null;
             }
         }
-        
+
+        private void EnterPickUp()
+        {
+            // Debug.Log("PickUp");
+            if (this.item == null)
+            {
+                this.SetConsumable();
+            }
+        }
+
+        private void EnterCheckpoint(Collider other)
+        {
+            Debug.Log("Enter");
+            if (GameObject.ReferenceEquals(check.gameObject, other.gameObject)) {
+                Debug.Log("True");
+
+                this.raceController.SetPlayerCheckpoint(this, check);
+            }
+        }
+
+        internal void SetConsumable()
+        {
+            // TODO random select consumible
+            item = this.gameObject.AddComponent<TurboConsumable>();
+            //cHud.SetConsumableIndicator(this.item);
+        }
+
+        internal void SetCheckpoint(CheckPoint c)
+        {
+            check = c;
+            pointer.SetCheck(check);
+        }
+        internal void SetFinishTime(float time)
+        {
+            float min = Mathf.FloorToInt(time / 60);
+            float sec = time % 60;
+            finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());
+        }
     }
 
 }

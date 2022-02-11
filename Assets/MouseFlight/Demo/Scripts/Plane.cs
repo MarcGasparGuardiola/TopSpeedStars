@@ -154,16 +154,16 @@ namespace MFlight.Demo
                 actualThrust -= acceleration;
             }
 
+            
             if (Input.GetAxis("Acceleration") == 0) {
-                if (actualThrust < thrust) {
-                    actualThrust += acceleration;
-                } else if (actualThrust > thrust) {
+                if (actualThrust > 0)
+                {
                     actualThrust -= acceleration;
                 }
-            }
+            } 
 
 
-            Debug.Log(actualThrust);
+            // Debug.Log(actualThrust);
 
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
