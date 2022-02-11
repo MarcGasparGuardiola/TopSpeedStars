@@ -7,14 +7,9 @@ namespace Gameplay.actors
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private Consumable item = null;
+        //[SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
-        internal CheckPoint check = null;
-        public RaceController raceController = null;
-        public PointerController pointer;
-        float time;
-        public Text finishText;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,10 +34,17 @@ namespace Gameplay.actors
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PickUp"))
+            if (other.gameObject.CompareTag("PickUp") || other is PickUp)
             {
-                other.GetComponent<PickUp>().TimeOut();
-                this.EnterPickUp();
+                other.gameObject.SetActive(false);
+                Debug.Log("PickUp");
+                if (this.item == null)
+                {
+                    // TODO random select consumible
+                    item = this.gameObject.AddComponent<LogConsumable>();
+                    //cHud.SetConsumableIndicator(this.item);
+
+                }  
             }
             if (other.gameObject.CompareTag("Checkpoint"))
             {
@@ -52,11 +54,11 @@ namespace Gameplay.actors
 
         private void UseItem()
         {
-            if (item != null)
+            //if (item != null)
             {
                 // TODO determine if item is boost
-                item.Consume(this);
-                item = null;
+               // item.Consume(this);
+                //item = null;
             }
         }
 
