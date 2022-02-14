@@ -88,16 +88,17 @@ public class Login : MonoBehaviour
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + www.error);
-                    invalidCredencialsMessage.SetActive(false);
+                    invalidCredencialsMessage.SetActive(true);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + www.error);
-                    invalidCredencialsMessage.SetActive(false);
+                    invalidCredencialsMessage.SetActive(true);
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + www.downloadHandler.text);
                     Token token = GameObject.Find("Token").GetComponent<Token>();
                     token.setToken(www.downloadHandler.text);
+                    SceneManager.LoadScene("SampleScene");
                     break;
             }
         }
