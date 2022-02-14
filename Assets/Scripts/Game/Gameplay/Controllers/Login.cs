@@ -18,14 +18,24 @@ public class Login : MonoBehaviour
     public GameObject mailInput;
     public GameObject passwordInput;
 
-    public GameObject invalidCredencialsMessage;    
+    public GameObject invalidCredencialsMessage;
+    public GameObject loadingImage;
 
+    public float rotateSpeed = 200f;
     void Start()
     {
         //Subscribe to onClick event
         //loginButton.onClick.AddListener(logIn);
         //DontDestroyOnLoad(GameObject.Find("BBDD_Manager"));
         invalidCredencialsMessage.SetActive(false);
+        loadingImage.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (loadingImage.active) {
+            loadingImage.GetComponent<RectTransform>().Rotate(0f, 0f, rotateSpeed * Time.deltaTime);
+        }
     }
 
     Dictionary<string, string> userDetails = new Dictionary<string, string>
@@ -44,6 +54,7 @@ public class Login : MonoBehaviour
 
         Debug.Log("Hola");
 
+        loadingImage.SetActive(true);
         StartCoroutine(logInRequest("https://topspeedstarsapi.herokuapp.com/api/login", mail, password));
     }
 
@@ -102,5 +113,6 @@ public class Login : MonoBehaviour
                     break;
             }
         }
+        loadingImage.SetActive(false);
     }
 }
