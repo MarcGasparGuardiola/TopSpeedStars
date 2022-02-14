@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using Gameplay.actors;
+
 public class Login : MonoBehaviour
 {
     private string mail;
@@ -16,10 +18,7 @@ public class Login : MonoBehaviour
     public GameObject mailInput;
     public GameObject passwordInput;
 
-    public GameObject invalidCredencialsMessage;
-
-
-    
+    public GameObject invalidCredencialsMessage;    
 
     void Start()
     {
@@ -46,19 +45,6 @@ public class Login : MonoBehaviour
         Debug.Log("Hola");
 
         StartCoroutine(logInRequest("https://topspeedstarsapi.herokuapp.com/api/login", mail, password));
-
-        /*string foundPassword;
-        if (userDetails.TryGetValue(mail, out foundPassword) && (foundPassword == password))
-        {
-            Debug.Log("User authenticated");
-        }
-        else
-        {
-            invalidCredencialsMessage.SetActive(true);
-            Debug.Log("Invalid password");
-        }*/
-
-        //BBDD baseDades = new BBDD();
     }
 
     public void goToCreateUserScene() 
@@ -102,38 +88,16 @@ public class Login : MonoBehaviour
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + www.error);
+                    invalidCredencialsMessage.SetActive(false);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + www.error);
+                    invalidCredencialsMessage.SetActive(false);
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + www.downloadHandler.text);
-                    break;
-            }
-        }
-    }
-
-    IEnumerator GetRequest(string uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    Token token = GameObject.Find("Token").GetComponent<Token>();
+                    token.setToken(www.downloadHandler.text);
                     break;
             }
         }
