@@ -9,24 +9,21 @@ namespace Gameplay.controllers
 {
     public class RaceController : MonoBehaviour
     {
-        public static List<Player> raceFinishOrder;
         public Goal goal;
         public List<CheckPoint> checkPoints;
         float time = 0f;
         public Text timeText;
         void Start()
         {
-            raceFinishOrder = new List<Player>();
+            GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
+            Debug.Log(instance);
+            Instantiate(instance, new Vector3(0,0,0), new Quaternion(0,0,0,0));
             // TODO start race and timer
-            foreach (GameObject c in GameObject.FindGameObjectsWithTag("Checkpoint"))
-            {
-                checkPoints.Add(c.GetComponent<CheckPoint>());
-            }
-            checkPoints.Sort(delegate (CheckPoint x, CheckPoint y)
-            {
-                return x.id - y.id;
-            });
+            GetCheckpoints();
+
             InitializePlayer(FindObjectOfType<Player>());
+
+            timeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<Text>();
         }
 
         void Update()
@@ -37,6 +34,7 @@ namespace Gameplay.controllers
 
         internal void InitializePlayer(Player player)
         {
+            player.raceController = this;
             player.SetCheckpoint(checkPoints[0]);
             Debug.Log("Initialize");
         }
@@ -56,14 +54,12 @@ namespace Gameplay.controllers
                 }
                 catch { }
             }
-            
         }
 
         private void Finish(Player player)
         {
             // TODO finish the race
             player.SetFinishTime(time);
-            raceFinishOrder.Add(player);
             SceneSelector.goToResultList();
         }
 
@@ -73,6 +69,19 @@ namespace Gameplay.controllers
             float sec = time % 60;
             timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
         }
+
+        void GetCheckpoints()
+        {
+            foreach (GameObject c in GameObject.FindGameObjectsWithTag("Checkpoint"))
+            {
+                checkPoints.Add(c.GetComponent<CheckPoint>());
+            }
+            checkPoints.Sort(delegate (CheckPoint x, CheckPoint y)
+            {
+                return x.id - y.id;
+            });
+        }
+
     }
 }
 

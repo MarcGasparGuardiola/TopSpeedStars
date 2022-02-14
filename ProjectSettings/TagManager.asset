@@ -8,6 +8,8 @@ TagManager:
   - Checkpoint
   - Collision
   - PlayerSelection
+  - TimeText
+  - FinishText
   layers:
   - Default
   - TransparentFX

@@ -20,24 +20,24 @@ namespace Gameplay.actors
         float time;
         public Text finishText;
 
-        public static Character character;
+        public Character character;
 
         // Start is called before the first frame update
         void Start()
         {
-            // TODO set model dinamically
+            
+            character = GameObject.FindGameObjectWithTag("PlayerSelection").GetComponent<PlaneSelection>().devChar;
             GameObject prefab = Resources.Load(character.route) as GameObject;
             Debug.Log(character.route);
             GameObject instance = Instantiate(prefab);
-            instance.transform.localScale = Vector3.one * 7.5f;
+            instance.transform.localScale = Vector3.one * 5f;
             instance.transform.parent = this.transform;
-            
+            finishText = GameObject.FindGameObjectWithTag("FinishText").GetComponent<Text>();
         }
 
         // Update is called once per frame
         void Update()
-        {
-            
+        {            
             // consume, TODO input adequat
             if (Input.GetKeyDown(KeyCode.I))
             {
@@ -47,17 +47,10 @@ namespace Gameplay.actors
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PickUp") || other is PickUp)
+            if (other.gameObject.CompareTag("PickUp"))
             {
-                other.gameObject.SetActive(false);
-                Debug.Log("PickUp");
-                if (this.item == null)
-                {
-                    // TODO random select consumible
-                    item = this.gameObject.AddComponent<LogConsumable>();
-                    //cHud.SetConsumableIndicator(this.item);
-
-                }  
+                
+                this.EnterPickUp(other);
             }
             if (other.gameObject.CompareTag("Checkpoint"))
             {
@@ -67,16 +60,17 @@ namespace Gameplay.actors
 
         private void UseItem()
         {
-            //if (item != null)
+            if (item != null)
             {
                 // TODO determine if item is boost
-               // item.Consume(this);
-                //item = null;
+                item.Consume(this);
+                item = null;
             }
         }
 
-        private void EnterPickUp()
+        private void EnterPickUp(Collider other)
         {
+            other.gameObject.SetActive(false);
             // Debug.Log("PickUp");
             if (this.item == null)
             {
@@ -88,7 +82,7 @@ namespace Gameplay.actors
         {
             Debug.Log("Enter");
             if (GameObject.ReferenceEquals(check.gameObject, other.gameObject)) {
-                Debug.Log("True");
+                // Debug.Log("True");
 
                 this.raceController.SetPlayerCheckpoint(this, check);
             }
@@ -112,8 +106,6 @@ namespace Gameplay.actors
             float sec = time % 60;
             finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());
         }
-
-
     }
 
 }

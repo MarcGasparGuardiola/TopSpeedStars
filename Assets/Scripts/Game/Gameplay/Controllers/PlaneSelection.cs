@@ -42,7 +42,7 @@ public class PlaneSelection : MonoBehaviour
     {
         planeId = id;
         nameText.text = characters[id].name;
-        Player.character = characters[id];
+        devChar = characters[id];
     }
 
     public void OnConfirmSelection()
@@ -50,7 +50,9 @@ public class PlaneSelection : MonoBehaviour
         // TODO establish prefab dinamically
         //GameObject newInstance = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
         //newInstance.transform.GetComponentInChildren<Player>().character = devChar;
-        StartCoroutine(LoadAsync("SampleScene 1"));
+        StartCoroutine(LoadAsync("SampleScene"));
+        DontDestroyOnLoad(transform.gameObject);
+        
     }
 
     IEnumerator LoadAsync(string scene)
