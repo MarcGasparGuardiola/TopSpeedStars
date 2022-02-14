@@ -3,30 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LogIn : MonoBehaviour
+public class Login : MonoBehaviour
 {
     private string mail;
     private string password;
     private Button loginButton;
 
     public GameObject mailInput;
-    public GameObject mailErrorDisplay;
-
     public GameObject passwordInput;
-    public GameObject passwordErrorDisplay;
+
+    public GameObject invalidCredencialsMessage;
+
 
     
 
     void Start()
     {
         //Subscribe to onClick event
-        loginButton.onClick.AddListener(logIn);
-        DontDestroyOnLoad(GameObject.Find("BBDD_Manager"));
-
-        CreateGPXFolder();
+        //loginButton.onClick.AddListener(logIn);
+        //DontDestroyOnLoad(GameObject.Find("BBDD_Manager"));
+        invalidCredencialsMessage.SetActive(false);
     }
 
     Dictionary<string, string> userDetails = new Dictionary<string, string>
@@ -37,24 +37,28 @@ public class LogIn : MonoBehaviour
     };
 
     public void logIn()
+
     {
+        invalidCredencialsMessage.SetActive(false);
         string mail = mailInput.GetComponent<InputField>().text;
         string password = passwordInput.GetComponent<InputField>().text;
 
-        string foundPassword;
+        Debug.Log("Hola");
+
+        StartCoroutine(logInRequest("https://topspeedstarsapi.herokuapp.com/api/login", mail, password));
+
+        /*string foundPassword;
         if (userDetails.TryGetValue(mail, out foundPassword) && (foundPassword == password))
         {
             Debug.Log("User authenticated");
         }
         else
         {
+            invalidCredencialsMessage.SetActive(true);
             Debug.Log("Invalid password");
-        }
+        }*/
 
         //BBDD baseDades = new BBDD();
-
-
-
     }
 
     public void goToCreateUserScene() 
@@ -75,36 +79,63 @@ public class LogIn : MonoBehaviour
         }
     }
 
-    private void CreateGPXFolder()
-    {
-        // Specify the directory you want to manipulate.
-        string path = Path.Combine(Application.dataPath, "GPX");
-
-        try
-        {
-            // Determine whether the directory exists.
-            if (Directory.Exists(path))
-            {
-                Debug.Log("That path exists already.");
-
-            }
-            else
-            {
-                // Try to create the directory.
-                DirectoryInfo di = Directory.CreateDirectory(path);
-                Debug.Log("Carpeta creada");
-            }
-        }
-        catch (Exception e)
-        {
-
-        }
-        finally { }
-
-    }
-
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator logInRequest(string uri, string email, string password)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("email", email);
+        form.AddField("password", password);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(uri, form))
+        {
+            yield return www.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (www.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + www.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + www.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(pages[page] + ":\nReceived: " + www.downloadHandler.text);
+                    break;
+            }
+        }
+    }
+
+    IEnumerator GetRequest(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    break;
+            }
+        }
     }
 }

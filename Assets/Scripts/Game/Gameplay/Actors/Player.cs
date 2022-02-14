@@ -10,6 +10,13 @@ namespace Gameplay.actors
         //[SerializeField] private Consumable item = null;
         [SerializeField] private string name = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
+        [SerializeField] private Consumable item = null;
+        internal CheckPoint check = null;
+        public RaceController raceController = null;
+        public PointerController pointer;
+        float time;
+        public Text finishText;
+
         // Start is called before the first frame update
         void Start()
         {
