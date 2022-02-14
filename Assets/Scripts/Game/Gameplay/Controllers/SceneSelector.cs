@@ -24,4 +24,9 @@ public class SceneSelector : MonoBehaviour
             yield return null;
         }
     }
+
+    public static void goToResultList()
+    {
+        SceneManager.LoadScene("ResultList");
+    }
 }
