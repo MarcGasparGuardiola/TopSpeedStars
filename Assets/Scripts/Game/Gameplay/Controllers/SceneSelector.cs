@@ -12,8 +12,14 @@ public class SceneSelector : MonoBehaviour
         SceneManager.LoadScene("PlaneSelection");
     }
 
+<<<<<<< HEAD
     static public void goToFinishRaceScene()
     {
         SceneManager.LoadScene("ResultsList");
+=======
+    public static void goToResultList()
+    {
+        SceneManager.LoadScene("ResultList");
+>>>>>>> origin
     }
 }
