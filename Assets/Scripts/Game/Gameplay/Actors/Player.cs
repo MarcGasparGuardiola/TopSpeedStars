@@ -25,8 +25,8 @@ namespace Gameplay.actors
         // Start is called before the first frame update
         void Start()
         {
-            
-            character = GameObject.FindGameObjectWithTag("PlayerSelection").GetComponent<PlaneSelection>().devChar;
+                
+            character = FindObjectOfType<PlaneSelection>().devChar;
             GameObject prefab = Resources.Load(character.route) as GameObject;
             Debug.Log(character.route);
             GameObject instance = Instantiate(prefab);
