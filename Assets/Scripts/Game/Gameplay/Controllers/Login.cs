@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using Gameplay.actors;
+
 public class Login : MonoBehaviour
 {
     private string mail;
@@ -17,16 +19,23 @@ public class Login : MonoBehaviour
     public GameObject passwordInput;
 
     public GameObject invalidCredencialsMessage;
+    public GameObject loadingImage;
 
-
-    
-
+    public float rotateSpeed = 200f;
     void Start()
     {
         //Subscribe to onClick event
         //loginButton.onClick.AddListener(logIn);
         //DontDestroyOnLoad(GameObject.Find("BBDD_Manager"));
         invalidCredencialsMessage.SetActive(false);
+        loadingImage.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (loadingImage.active) {
+            loadingImage.GetComponent<RectTransform>().Rotate(0f, 0f, rotateSpeed * Time.deltaTime);
+        }
     }
 
     Dictionary<string, string> userDetails = new Dictionary<string, string>
@@ -45,20 +54,8 @@ public class Login : MonoBehaviour
 
         Debug.Log("Hola");
 
+        loadingImage.SetActive(true);
         StartCoroutine(logInRequest("https://topspeedstarsapi.herokuapp.com/api/login", mail, password));
-
-        /*string foundPassword;
-        if (userDetails.TryGetValue(mail, out foundPassword) && (foundPassword == password))
-        {
-            Debug.Log("User authenticated");
-        }
-        else
-        {
-            invalidCredencialsMessage.SetActive(true);
-            Debug.Log("Invalid password");
-        }*/
-
-        //BBDD baseDades = new BBDD();
     }
 
     public void goToCreateUserScene() 
@@ -102,40 +99,20 @@ public class Login : MonoBehaviour
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + www.error);
+                    invalidCredencialsMessage.SetActive(true);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + www.error);
+                    invalidCredencialsMessage.SetActive(true);
                     break;
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + www.downloadHandler.text);
+                    Token token = GameObject.Find("Token").GetComponent<Token>();
+                    token.setToken(www.downloadHandler.text);
+                    SceneManager.LoadScene("PlaneSelectionScene");
                     break;
             }
         }
-    }
-
-    IEnumerator GetRequest(string uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                    break;
-            }
-        }
+        loadingImage.SetActive(false);
     }
 }
