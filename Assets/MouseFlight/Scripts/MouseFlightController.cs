@@ -81,15 +81,6 @@ namespace MFlight
 
         private void Awake()
         {
-            if (aircraft == null)
-                Debug.LogError(name + "MouseFlightController - No aircraft transform assigned!");
-            if (mouseAim == null)
-                Debug.LogError(name + "MouseFlightController - No mouse aim transform assigned!");
-            if (cameraRig == null)
-                Debug.LogError(name + "MouseFlightController - No camera rig transform assigned!");
-            if (cam == null)
-                Debug.LogError(name + "MouseFlightController - No camera transform assigned!");
-
             // To work correctly, the entire rig must not be parented to anything.
             // When parented to something (such as an aircraft) it will inherit those
             // rotations causing unintended rotations as it gets dragged around.
