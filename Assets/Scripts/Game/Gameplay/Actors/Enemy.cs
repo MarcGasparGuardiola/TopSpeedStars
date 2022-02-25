@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float torque = 500f;
-    //public float thrust = 20000;
     public float smoothTime = 0.3F;
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
@@ -19,6 +18,7 @@ public class Enemy : MonoBehaviour
     [Header("Physics")]
     [Tooltip("Max velocity")] public float maxVelocity = 1000f;
     [Tooltip("Force to push plane forwards with")] public float thrust = 1000f;
+    [Tooltip("Force to push plane forwards with")] public float maxThrust = 1000f;
     private float actualThrust = 0;
     [Tooltip("Acceleration of aircraft")] public float acceleration = 100f;
     [Tooltip("Drag of aircraft")] public float dragRate = 30f;
@@ -83,6 +83,11 @@ public class Enemy : MonoBehaviour
         var localFlyTarget = transform.InverseTransformPoint(flyTarget).normalized * sensitivity;
         var angleOffTarget = Vector3.Angle(transform.forward, flyTarget - transform.position);
 
+        var percentOfAngle = angleOffTarget / 360;
+        Debug.Log(percentOfAngle);
+        var percentOfThrust = thrust * 1/percentOfAngle;
+
+        actualThrust = Mathf.Clamp(percentOfThrust, maxThrust / 90, maxThrust);
         // IMPORTANT!
         // These inputs are created proportionally. This means it can be prone to
         // overshooting. The physics in this example are tweaked so that it's not a big
@@ -124,7 +129,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        actualThrust = 100;
+
+        //actualThrust = 75;
         // Debug.Log(actualThrust);
 
         // Ultra simple flight where the plane just gets pushed forward and manipulated
@@ -135,5 +141,7 @@ public class Enemy : MonoBehaviour
                                             turnTorque.y * yaw,
                                             -turnTorque.z * roll) * forceMult,
                                 ForceMode.Force);
+
+        Debug.Log(rb.velocity);
     }
 }
