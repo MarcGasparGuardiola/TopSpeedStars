@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -938,17 +938,17 @@ PrefabInstance:
     - target: {fileID: 3989411445410788125, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11123301
+      value: 0.111233026
       objectReference: {fileID: 0}
     - target: {fileID: 3989411445410788125, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000030528895
+      value: -1.3830602e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3989411445410788125, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000034170256
+      value: -1.6342114e-16
       objectReference: {fileID: 0}
     - target: {fileID: 3989411445410788125, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
@@ -1008,17 +1008,17 @@ PrefabInstance:
     - target: {fileID: 8390099928272876520, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11123301
+      value: 0.111233026
       objectReference: {fileID: 0}
     - target: {fileID: 8390099928272876520, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000030528895
+      value: -1.3830602e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8390099928272876520, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000034170256
+      value: -1.6342114e-16
       objectReference: {fileID: 0}
     - target: {fileID: 8390099928272876520, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
