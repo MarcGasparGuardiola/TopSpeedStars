@@ -141,7 +141,5 @@ public class Enemy : MonoBehaviour
                                             turnTorque.y * yaw,
                                             -turnTorque.z * roll) * forceMult,
                                 ForceMode.Force);
-
-        Debug.Log(rb.velocity);
     }
 }
