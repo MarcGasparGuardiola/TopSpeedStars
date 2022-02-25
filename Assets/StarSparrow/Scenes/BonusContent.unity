@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1915961937}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1416,7 +1416,7 @@ TextMesh:
     etc..\nWe have just included here couple\nof mines and missiles/bombs to\nhelp
     you prototype your game. \nTo download the complete \ncollection check our asset
     store \npage, or copy and paste this \nlink directly: http://u3d.as/1xui"
-  m_OffsetZ: 0
+  m_OffsetZ: -0.65
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 1
