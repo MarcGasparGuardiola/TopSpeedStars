@@ -8,7 +8,7 @@ namespace Gameplay.actors
     public class Player : MonoBehaviour
     {
         //[SerializeField] private Consumable item = null;
-        [SerializeField] private string name = ""; // For future instances where the player's username is displayed
+        [SerializeField] private string username = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
 
         public CheckPoint check = null;
@@ -20,15 +20,18 @@ namespace Gameplay.actors
         float time;
         public Text finishText;
 
-        public Character character;
+        Character character;
 
         // Start is called before the first frame update
         void Start()
         {
-                
-            character = FindObjectOfType<PlaneSelection>().devChar;
+            if (CharacterManager.Instance != null)
+            {
+                character = CharacterManager.Instance.character;
+            }
+            
             GameObject prefab = Resources.Load(character.route) as GameObject;
-            Debug.Log(character.route);
+            
             GameObject instance = Instantiate(prefab);
             instance.transform.localScale = Vector3.one * 5f;
             instance.transform.parent = this.transform;

@@ -15,10 +15,10 @@ namespace Gameplay.controllers
         public Text timeText;
         void Start()
         {
-            GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
-            Debug.Log(instance);
-            Instantiate(instance, new Vector3(0,0,0), new Quaternion(0,0,0,0));
             // TODO start race and timer
+            GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
+            Instantiate(instance, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+            
             GetCheckpoints();
 
             InitializePlayer(FindObjectOfType<Player>());

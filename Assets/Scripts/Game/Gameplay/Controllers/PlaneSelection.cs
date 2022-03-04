@@ -42,7 +42,7 @@ public class PlaneSelection : MonoBehaviour
     {
         planeId = id;
         nameText.text = characters[id].name;
-        devChar = characters[id];
+        CharacterManager.Instance.character = characters[id];
     }
 
     public void OnConfirmSelection()
@@ -51,7 +51,6 @@ public class PlaneSelection : MonoBehaviour
         //GameObject newInstance = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
         //newInstance.transform.GetComponentInChildren<Player>().character = devChar;
         StartCoroutine(LoadAsync("SampleScene"));
-        DontDestroyOnLoad(transform.gameObject);
         
     }
 
