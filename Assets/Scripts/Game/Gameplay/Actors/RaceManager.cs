@@ -15,7 +15,7 @@ public class RaceManager : MonoBehaviour
                     transform.gameObject.AddComponent<RaceController>();
                     break;
                 case 2:
-                    // TODO vs cpu
+                    transform.gameObject.AddComponent<VsCpuController>();
                     break;
                 case 3:
                     // TODO multiplayer online

@@ -10,6 +10,7 @@ TagManager:
   - PlayerSelection
   - TimeText
   - FinishText
+  - Spawn
   layers:
   - Default
   - TransparentFX

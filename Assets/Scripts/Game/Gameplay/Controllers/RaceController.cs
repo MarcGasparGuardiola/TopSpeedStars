@@ -13,6 +13,7 @@ namespace Gameplay.controllers
         public List<CheckPoint> checkPoints;
         float time = 0f;
         public Text timeText;
+        public Vector3 spawnPosition;
 
         private void Awake()
         {
@@ -25,7 +26,8 @@ namespace Gameplay.controllers
         { 
             // TODO start race and timer
             GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
-            Spawn(instance, new Vector3(0, 0, 0));
+            GetSpawnPoint();
+            Spawn(instance,spawnPosition);
         }
 
         void Update()
@@ -34,7 +36,7 @@ namespace Gameplay.controllers
             DisplayTime(time);
         }
 
-        void Spawn(GameObject g, Vector3 position)
+        internal void Spawn(GameObject g, Vector3 position)
         {
             GameObject i = Instantiate(g,position, new Quaternion(0,0,0,0));
             InitializePlayer(i.GetComponentInChildren<Player>());
@@ -92,7 +94,14 @@ namespace Gameplay.controllers
         }
         void GetSpawnPoint()
         {
-
+            foreach (GameObject s in GameObject.FindGameObjectsWithTag("Spawn"))
+            {
+                if (s.GetComponent<SpawnPoint>().index == 0)
+                {
+                    spawnPosition = s.transform.position;
+                    return;
+                }
+            }
         }
 
     }

@@ -32,7 +32,7 @@ namespace Gameplay.actors
             
             GameObject prefab = Resources.Load(character.route) as GameObject;
             
-            GameObject instance = Instantiate(prefab);
+            GameObject instance = Instantiate(prefab,transform);
             instance.transform.localScale = Vector3.one * 5f;
             instance.transform.parent = this.transform;
             finishText = GameObject.FindGameObjectWithTag("FinishText").GetComponent<Text>();

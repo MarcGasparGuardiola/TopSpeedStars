@@ -5,7 +5,7 @@ using Gameplay.actors;
 
 namespace Gameplay.controllers
 {
-    public class MultiplayerController : RaceController
+    public class VsCpuController : RaceController
     {
         private (Player, float) classification;
         internal void Finish(Player player)
