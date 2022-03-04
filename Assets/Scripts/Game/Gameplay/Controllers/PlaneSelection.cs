@@ -42,7 +42,7 @@ public class PlaneSelection : MonoBehaviour
     {
         planeId = id;
         nameText.text = characters[id].name;
-        CharacterManager.Instance.character = characters[id];
+        GameplayManager.Instance.character = characters[id];
     }
 
     public void OnConfirmSelection()

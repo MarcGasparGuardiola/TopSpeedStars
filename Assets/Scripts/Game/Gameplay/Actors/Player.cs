@@ -25,9 +25,9 @@ namespace Gameplay.actors
         // Start is called before the first frame update
         void Start()
         {
-            if (CharacterManager.Instance != null)
+            if (GameplayManager.Instance != null)
             {
-                character = CharacterManager.Instance.character;
+                character = GameplayManager.Instance.character;
             }
             
             GameObject prefab = Resources.Load(character.route) as GameObject;

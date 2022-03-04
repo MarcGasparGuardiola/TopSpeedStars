@@ -13,23 +13,31 @@ namespace Gameplay.controllers
         public List<CheckPoint> checkPoints;
         float time = 0f;
         public Text timeText;
-        void Start()
+
+        private void Awake()
         {
+            GetCheckpoints();
+            timeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<Text>();
+            goal = FindObjectOfType<Goal>();
+        }
+
+        void Start()
+        { 
             // TODO start race and timer
             GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
-            Instantiate(instance, new Vector3(0,0,0), new Quaternion(0,0,0,0));
-            
-            GetCheckpoints();
-
-            InitializePlayer(FindObjectOfType<Player>());
-
-            timeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<Text>();
+            Spawn(instance, new Vector3(0, 0, 0));
         }
 
         void Update()
         {
             time += Time.deltaTime;
             DisplayTime(time);
+        }
+
+        void Spawn(GameObject g, Vector3 position)
+        {
+            GameObject i = Instantiate(g,position, new Quaternion(0,0,0,0));
+            InitializePlayer(i.GetComponentInChildren<Player>());
         }
 
         internal void InitializePlayer(Player player)
@@ -72,6 +80,7 @@ namespace Gameplay.controllers
 
         void GetCheckpoints()
         {
+            checkPoints = new List<CheckPoint>();
             foreach (GameObject c in GameObject.FindGameObjectsWithTag("Checkpoint"))
             {
                 checkPoints.Add(c.GetComponent<CheckPoint>());
@@ -80,6 +89,10 @@ namespace Gameplay.controllers
             {
                 return x.id - y.id;
             });
+        }
+        void GetSpawnPoint()
+        {
+
         }
 
     }

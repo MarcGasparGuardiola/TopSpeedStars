@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 766938726}
   - component: {fileID: 766938725}
   m_Layer: 0
-  m_Name: CharacterManager
+  m_Name: GamplayManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
+  playType: 1
 --- !u!4 &766938726
 Transform:
   m_ObjectHideFlags: 0
