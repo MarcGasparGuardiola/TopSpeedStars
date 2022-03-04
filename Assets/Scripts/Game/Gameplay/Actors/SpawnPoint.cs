@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField]  public int index;
+    [SerializeField]  public int id;
     public Vector3 position;// optional reposicionar en start?
     void Start()
     {

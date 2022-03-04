@@ -23,13 +23,16 @@ namespace Gameplay.controllers
         }
 
         void Start()
-        { 
+        {
             // TODO start race and timer
+            Initialize();
+        }
+        internal void Initialize()
+        {
             GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
             GetSpawnPoint();
-            Spawn(instance,spawnPosition);
+            Spawn(instance, spawnPosition);
         }
-
         void Update()
         {
             time += Time.deltaTime;
@@ -42,7 +45,7 @@ namespace Gameplay.controllers
             InitializePlayer(i.GetComponentInChildren<Player>());
         }
 
-        internal void InitializePlayer(Player player)
+        void InitializePlayer(Player player)
         {
             player.raceController = this;
             player.SetCheckpoint(checkPoints[0]);
@@ -51,7 +54,7 @@ namespace Gameplay.controllers
 
         internal void SetPlayerCheckpoint(Player player, CheckPoint check)
         {
-            if (GameObject.ReferenceEquals(check.gameObject, goal.gameObject))
+            if (ReferenceEquals(check.gameObject, goal.gameObject))
             {
                 this.Finish(player);
             } else
@@ -83,20 +86,17 @@ namespace Gameplay.controllers
         void GetCheckpoints()
         {
             checkPoints = new List<CheckPoint>();
-            foreach (GameObject c in GameObject.FindGameObjectsWithTag("Checkpoint"))
-            {
-                checkPoints.Add(c.GetComponent<CheckPoint>());
-            }
+            checkPoints.AddRange(FindObjectsOfType<CheckPoint>());
             checkPoints.Sort(delegate (CheckPoint x, CheckPoint y)
             {
                 return x.id - y.id;
             });
         }
-        void GetSpawnPoint()
+        private void GetSpawnPoint()
         {
             foreach (GameObject s in GameObject.FindGameObjectsWithTag("Spawn"))
             {
-                if (s.GetComponent<SpawnPoint>().index == 0)
+                if (s.GetComponent<SpawnPoint>().id == 0)
                 {
                     spawnPosition = s.transform.position;
                     return;

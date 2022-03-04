@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aa81766379b10428a70e52391242a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
+  id: 2
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &564503444
 GameObject:
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aa81766379b10428a70e52391242a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  id: 1
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &1185905104
 GameObject:
@@ -1386,7 +1386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418851578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 429, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 240968593}
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aa81766379b10428a70e52391242a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
+  id: 0
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &1469894169
 GameObject:
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aa81766379b10428a70e52391242a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
+  id: 3
   position: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1698926298
 LightingSettings:
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aa81766379b10428a70e52391242a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  id: 4
   position: {x: 0, y: 0, z: 0}
 --- !u!1001 &2086773091
 PrefabInstance:
