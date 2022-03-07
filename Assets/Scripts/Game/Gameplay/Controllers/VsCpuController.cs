@@ -35,7 +35,7 @@ namespace Gameplay.controllers
         }
         void SpawnShips()
         {
-            GameObject ship = Resources.Load<GameObject>("StarSparrow/Modular Examples/StarSparrow17");
+            GameObject ship = Resources.Load<GameObject>("Prefabs/NPC");
             for(int i = 1; i < spawnPoints.Length; ++i)
             {
                 Instantiate(ship, spawnPoints[i].transform.position, Quaternion.identity);
