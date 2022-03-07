@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vigil-class Corvette
+* source:	https://sketchfab.com/3d-models/vigil-class-corvette-650190431f694cb8b571dbbcee070e5b
+* author:	lightwarrior (https://sketchfab.com/lightwarrior)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vigil-class Corvette" (https://sketchfab.com/3d-models/vigil-class-corvette-650190431f694cb8b571dbbcee070e5b) by lightwarrior (https://sketchfab.com/lightwarrior) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

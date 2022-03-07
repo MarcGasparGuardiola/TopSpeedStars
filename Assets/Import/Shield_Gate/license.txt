@@ -1,0 +1,11 @@
+Model Information:
+* title:	Shield Gate
+* source:	https://sketchfab.com/3d-models/shield-gate-5f530e1082b94475ad7f24f2953d91dd
+* author:	lightwarrior (https://sketchfab.com/lightwarrior)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Shield Gate" (https://sketchfab.com/3d-models/shield-gate-5f530e1082b94475ad7f24f2953d91dd) by lightwarrior (https://sketchfab.com/lightwarrior) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
