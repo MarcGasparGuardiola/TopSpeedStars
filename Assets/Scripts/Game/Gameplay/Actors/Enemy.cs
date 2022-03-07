@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
         var angleOffTarget = Vector3.Angle(transform.forward, flyTarget - transform.position);
 
         var percentOfAngle = angleOffTarget / 360;
-        Debug.Log(percentOfAngle);
+        // Debug.Log(percentOfAngle);
         var percentOfThrust = thrust * 1/percentOfAngle;
 
         actualThrust = Mathf.Clamp(percentOfThrust, maxThrust / 90, maxThrust);
@@ -142,6 +142,6 @@ public class Enemy : MonoBehaviour
                                             -turnTorque.z * roll) * forceMult,
                                 ForceMode.Force);
 
-        Debug.Log(rb.velocity);
+       // Debug.Log(rb.velocity);
     }
 }

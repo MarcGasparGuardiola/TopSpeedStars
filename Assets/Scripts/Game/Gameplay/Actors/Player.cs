@@ -20,7 +20,7 @@ namespace Gameplay.actors
         float time;
         public Text finishText;
 
-        Character character;
+        public Character character;
 
         // Start is called before the first frame update
         void Start()

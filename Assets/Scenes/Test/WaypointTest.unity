@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1001 &77263556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -443,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1001 &323785903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1 &586536050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1 &929524418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1077,7 @@ MonoBehaviour:
   - {fileID: 1860266944}
   - {fileID: 1167755714}
   timeText: {fileID: 1875492782}
+  spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &929524420
 Transform:
   m_ObjectHideFlags: 0
@@ -1147,6 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1 &1125622949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1001 &1282395584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1577,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1001 &1388284813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1681,6 +1689,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
+--- !u!1 &1438882681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8655866941554452363, guid: 261c069ab14ebc644b25d0c5a473eba3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1708252421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438882687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438882681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f053c0ac4852e448255788795a2b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torque: 500
+  smoothTime: 0.3
+  waypoints:
+  - {fileID: 245992708}
+  - {fileID: 1860266943}
+  - {fileID: 1167755712}
+  maxVelocity: 100
+  thrust: 10
+  maxThrust: 100
+  acceleration: 10
+  dragRate: 30
+  turnTorque: {x: 90, y: 25, z: 45}
+  forceMult: 1000
+  tensor: {x: 2000, y: 2300, z: 352}
+  sensitivity: 5
+  aggressiveTurnAngle: 10
+  pitch: 0
+  yaw: 0
+  roll: 0
 --- !u!1 &1489943679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3441441171893011480, guid: dfd5c72b1fa31964790402220b631a59,
@@ -1706,6 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1 &1544141569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2213,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8492434397821315596, guid: 261c069ab14ebc644b25d0c5a473eba3,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 11400000, guid: 664c1755b52ad2d4091d620355d86a1c,
+        type: 2}
     - target: {fileID: 8572195964212060599, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_Enabled
@@ -2175,7 +2228,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pointer
       value: 
-      objectReference: {fileID: 1708252424}
+      objectReference: {fileID: 0}
     - target: {fileID: 9127509475396220295, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_Enabled
@@ -2194,43 +2247,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1708252421}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1708252423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1706064625393056811, guid: 261c069ab14ebc644b25d0c5a473eba3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1708252421}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1708252424 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3886085765773031187, guid: 261c069ab14ebc644b25d0c5a473eba3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1708252421}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708252423}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411b94b201fb69f49b19f0e02fc3e055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1708252425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5234091780514445671, guid: 261c069ab14ebc644b25d0c5a473eba3,
     type: 3}
   m_PrefabInstance: {fileID: 1708252421}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1708252426
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708252423}
-  m_Material: {fileID: 13400000, guid: 2f2e5eb20395f1f49bcb53c3ec402377, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 30, y: 10, z: 80}
-  m_Center: {x: 0, y: 0, z: 10}
 --- !u!114 &1708252427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,45 +2301,6 @@ MonoBehaviour:
   IgnoreTag: 
   AimDistance: 200
   AimTargetReticle: {fileID: 0}
---- !u!114 &1708252430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708252423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f053c0ac4852e448255788795a2b66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  torque: 500
-  smoothTime: 0.3
-  waypoints:
-  - {fileID: 245992708}
-  - {fileID: 1860266943}
-  - {fileID: 1167755712}
-  - {fileID: 1489943680}
-  - {fileID: 1955036125}
-  - {fileID: 517283247}
-  - {fileID: 1437601736}
-  - {fileID: 1067559520}
-  - {fileID: 921044282}
-  - {fileID: 1336648450}
-  - {fileID: 2104581559}
-  - {fileID: 64465444}
-  maxVelocity: 1000
-  thrust: 20000
-  acceleration: 100
-  dragRate: 30
-  turnTorque: {x: 20, y: 17, z: 10}
-  forceMult: 1000
-  tensor: {x: 2000, y: 2300, z: 352}
-  sensitivity: 5
-  aggressiveTurnAngle: 5
-  pitch: -1
-  yaw: 0
-  roll: 0
 --- !u!1001 &1860266941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2422,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1 &1860487738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,6 +2622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
 --- !u!1001 &1988389716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2742,3 +2727,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceController: {fileID: 0}
+  id: 0
