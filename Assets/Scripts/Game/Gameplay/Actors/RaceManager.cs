@@ -11,13 +11,13 @@ public class RaceManager : MonoBehaviour
         {
             switch (GameplayManager.Instance.playType)
             {
-                case 1:
+                case 0:
                     transform.gameObject.AddComponent<RaceController>();
                     break;
-                case 2:
+                case 1:
                     transform.gameObject.AddComponent<VsCpuController>();
                     break;
-                case 3:
+                case 2:
                     // TODO multiplayer online
                     break;
                 default:

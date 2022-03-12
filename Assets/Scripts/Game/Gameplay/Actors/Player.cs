@@ -8,21 +8,28 @@ namespace Gameplay.actors
     public class Player : MonoBehaviour
     {
         //[SerializeField] private Consumable item = null;
-        [SerializeField] private string username = ""; // For future instances where the player's username is displayed
+        [SerializeField] internal string username = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
 
         public CheckPoint check = null;
 
-        [SerializeField] private Consumable item = null;
+        public Consumable item = null;
 
         public RaceController raceController = null;
         public PointerController pointer;
         float time;
-        public Text finishText;
+        public bool finished = false;
+        
 
         public Character character;
 
         // Start is called before the first frame update
+
+        private void Awake()
+        {
+            username = "PLAYER";
+            // TODO ship stats
+        }
         void Start()
         {
             if (GameplayManager.Instance != null)
@@ -35,11 +42,11 @@ namespace Gameplay.actors
             GameObject instance = Instantiate(prefab,transform);
             instance.transform.localScale = Vector3.one * 5f;
             instance.transform.parent = this.transform;
-            finishText = GameObject.FindGameObjectWithTag("FinishText").GetComponent<Text>();
+            
         }
 
         // Update is called once per frame
-        void Update()
+        private  void Update()
         {            
             // consume, TODO input adequat
             if (Input.GetKeyDown(KeyCode.I))
@@ -48,7 +55,7 @@ namespace Gameplay.actors
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        internal void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("PickUp"))
             {
@@ -71,9 +78,9 @@ namespace Gameplay.actors
             }
         }
 
-        private void EnterPickUp(Collider other)
+        internal void EnterPickUp(Collider other)
         {
-            other.gameObject.SetActive(false);
+            other.GetComponent<PickUp>().TimeOut();
             // Debug.Log("PickUp");
             if (this.item == null)
             {
@@ -81,9 +88,9 @@ namespace Gameplay.actors
             }
         }
 
-        private void EnterCheckpoint(Collider other)
+        internal void EnterCheckpoint(Collider other)
         {
-            Debug.Log("Enter");
+            
             if (GameObject.ReferenceEquals(check.gameObject, other.gameObject)) {
                 // Debug.Log("True");
 
@@ -103,12 +110,7 @@ namespace Gameplay.actors
             check = c;
             pointer.SetCheck(check);
         }
-        internal void SetFinishTime(float time)
-        {
-            float min = Mathf.FloorToInt(time / 60);
-            float sec = time % 60;
-            finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());
-        }
+        
     }
 
 }

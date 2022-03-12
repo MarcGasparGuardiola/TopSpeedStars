@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay.actors;
+using Gameplay.controllers;
 
-public class NPC : MonoBehaviour
+public class NPC : Player
 {
+    public int numberId;
     Enemy brain;
     List<Transform> checkPoints;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        username = "CPU";
         this.brain = gameObject.GetComponent<Enemy>();
         GetCheckpoints();
         Debug.LogWarning("Checkpoints gotten");
@@ -18,8 +21,9 @@ public class NPC : MonoBehaviour
     }
     void Start()
     {
-        // TODO feed waypoints
-        // TODO random ship
+        // TODO positioning and classification
+
+        // TODO ship stats
         // TODO items
     }
 
@@ -40,5 +44,25 @@ public class NPC : MonoBehaviour
         {
             return x.GetComponent<CheckPoint>().id - y.GetComponent<CheckPoint>().id;
         });
+    }
+
+    internal new void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+
+            this.EnterPickUp(other);
+        }
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            this.EnterCheckpoint(other);
+        }
+    }
+
+    internal new void EnterCheckpoint(Collider other)
+    {
+        // absolutely scuffed stuff mate. Banger.
+        ((VsCpuController) raceController).CheckGoal(this, other);
+        
     }
 }

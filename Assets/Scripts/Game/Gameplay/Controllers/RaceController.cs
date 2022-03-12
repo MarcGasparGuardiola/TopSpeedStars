@@ -9,17 +9,21 @@ namespace Gameplay.controllers
 {
     public class RaceController : MonoBehaviour
     {
+        private (Player, float) finalTime;
         public Goal goal;
         public List<CheckPoint> checkPoints;
-        float time = 0f;
+        public float time = 0f;
         public Text timeText;
+        public Text finishText;
         public Vector3 spawnPosition;
+        private bool finished = false;
 
-        private void Awake()
+        internal void Awake()
         {
             GetCheckpoints();
             timeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<Text>();
             goal = FindObjectOfType<Goal>();
+            finishText = GameObject.FindGameObjectWithTag("FinishText").GetComponent<Text>();
         }
 
         void Start()
@@ -27,16 +31,18 @@ namespace Gameplay.controllers
             // TODO start race and timer
             Initialize();
         }
+        
+        void Update()
+        {
+            time += Time.deltaTime;
+            DisplayTime(time);
+        }
+
         internal void Initialize()
         {
             GameObject instance = Resources.Load<GameObject>("Prefabs/Player");
             GetSpawnPoint();
             Spawn(instance, spawnPosition);
-        }
-        void Update()
-        {
-            time += Time.deltaTime;
-            DisplayTime(time);
         }
 
         internal void Spawn(GameObject g, Vector3 position)
@@ -54,7 +60,7 @@ namespace Gameplay.controllers
 
         internal void SetPlayerCheckpoint(Player player, CheckPoint check)
         {
-            if (ReferenceEquals(check.gameObject, goal.gameObject))
+            if (ReferenceEquals(check.gameObject, goal.gameObject) && !player.finished)
             {
                 this.Finish(player);
             } else
@@ -69,20 +75,6 @@ namespace Gameplay.controllers
             }
         }
 
-        private void Finish(Player player)
-        {
-            // TODO finish the race
-            player.SetFinishTime(time);
-            SceneSelector.goToResultList();
-        }
-
-        void DisplayTime(float time)
-        {
-            float min = Mathf.FloorToInt(time / 60);
-            float sec = time % 60;
-            timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
-        }
-
         void GetCheckpoints()
         {
             checkPoints = new List<CheckPoint>();
@@ -92,6 +84,7 @@ namespace Gameplay.controllers
                 return x.id - y.id;
             });
         }
+
         private void GetSpawnPoint()
         {
             foreach (GameObject s in GameObject.FindGameObjectsWithTag("Spawn"))
@@ -101,6 +94,32 @@ namespace Gameplay.controllers
                     spawnPosition = s.transform.position;
                     return;
                 }
+            }
+        }
+
+        private void Finish(Player player)
+        {
+            // TODO finish the race
+            player.finished = true;
+            this.finished = true;
+            SetFinishTime(time, player);
+            //SceneSelector.goToResultList();
+        }
+
+        private void SetFinishTime(float time, Player player)
+        {
+            float min = Mathf.FloorToInt(time / 60);
+            float sec = time % 60;
+            finishText.text = string.Format("{0:00}:{1}", min, sec.ToString());
+        }
+
+        void DisplayTime(float time)
+        {
+            if (!finished)
+            {
+                float min = Mathf.FloorToInt(time / 60);
+                float sec = time % 60;
+                timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
             }
         }
 

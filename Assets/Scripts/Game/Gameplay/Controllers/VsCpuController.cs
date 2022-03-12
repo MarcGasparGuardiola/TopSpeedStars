@@ -9,12 +9,13 @@ namespace Gameplay.controllers
 {
     public class VsCpuController : RaceController
     {
-        private (Player, float) classification; // final classification
+        [SerializeField]public List<(Player, float)> classification; // final classification
         public Text positionText;
         public SpawnPoint[] spawnPoints;
 
         private void Start()
         {
+            classification = new List<(Player, float)>();
             Initialize();
         }
         internal new void Initialize()
@@ -38,13 +39,41 @@ namespace Gameplay.controllers
             GameObject ship = Resources.Load<GameObject>("Prefabs/NPC");
             for(int i = 1; i < spawnPoints.Length; ++i)
             {
-                Instantiate(ship, spawnPoints[i].transform.position, Quaternion.identity);
+                GameObject instance = Instantiate(ship, spawnPoints[i].transform.position, Quaternion.identity);
+                instance.GetComponent<NPC>().numberId = i;
+                Debug.Log("new ship");
+                
+                instance.GetComponent<NPC>().raceController = this;
+                // TODO set random ship
+            }
+        }
 
+        internal void CheckGoal(Player player, Collider other)
+        {
+            if (ReferenceEquals(other.gameObject, goal.gameObject) && !player.finished)
+            {
+                Debug.Log("Goal!!!!!!!!!");
+                this.Finish(player);
             }
         }
         private void Finish(Player player)
         {
+            // TODO finish the race
+            
+            SetFinishTime(player, time);
+            //SceneSelector.goToResultList();
+        }
 
+        private void SetFinishTime( Player player,float time)
+        {
+            Debug.Log("SetFinishTIme");
+            if (!player.finished)
+            {
+                Debug.Log(time);
+                player.finished = true;
+                classification.Add((player, time));
+                Debug.Log(player.username + " : " + time);
+            }
         }
     }
 }

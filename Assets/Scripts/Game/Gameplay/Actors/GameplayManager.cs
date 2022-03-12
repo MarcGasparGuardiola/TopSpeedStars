@@ -19,5 +19,8 @@ public class GameplayManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
+    public void SetPlayType(int type)
+    {
+        if (Instance != null) Instance.playType = type;
+    }
 }

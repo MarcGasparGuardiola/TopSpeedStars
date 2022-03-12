@@ -69,11 +69,14 @@ public class Enemy : MonoBehaviour
         yaw = autoYaw;
         pitch = autoPitch;
         roll = autoRoll;
-
-        var distance = Vector3.Distance(rb.position, waypoints[_index].position);
-        if (distance < 100) {
-            _index++;
-        }
+        try
+        {
+            var distance = Vector3.Distance(rb.position, waypoints[_index].position);
+            if (distance < 100 && waypoints.Count-1 > _index) {
+                _index++;
+            }
+        } catch { }
+       
     }
 
     private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)
