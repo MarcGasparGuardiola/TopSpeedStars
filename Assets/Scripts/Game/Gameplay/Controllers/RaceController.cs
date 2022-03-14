@@ -17,6 +17,7 @@ namespace Gameplay.controllers
         public Text finishText;
         public Vector3 spawnPosition;
         private bool finished = false;
+        public GameObject resultPanel;
 
         internal void Awake()
         {
@@ -103,7 +104,13 @@ namespace Gameplay.controllers
             player.finished = true;
             this.finished = true;
             SetFinishTime(time, player);
+            if (!typeof(NPC).IsInstanceOfType(player)) ShowResultPanel();
             //SceneSelector.goToResultList();
+        }
+
+        public void ShowResultPanel()
+        {
+            resultPanel.SetActive(true);
         }
 
         private void SetFinishTime(float time, Player player)
