@@ -11,6 +11,7 @@ TagManager:
   - TimeText
   - FinishText
   - Spawn
+  - FinishPanel
   layers:
   - Default
   - TransparentFX

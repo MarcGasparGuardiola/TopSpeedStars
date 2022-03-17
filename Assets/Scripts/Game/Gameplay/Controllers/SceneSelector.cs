@@ -27,6 +27,6 @@ public class SceneSelector : MonoBehaviour
 
     public static void goToResultList()
     {
-        SceneManager.LoadScene("ResultList");
+        SceneManager.LoadScene("ResultsList");
     }
 }

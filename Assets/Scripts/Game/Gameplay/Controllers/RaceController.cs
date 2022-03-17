@@ -17,7 +17,7 @@ namespace Gameplay.controllers
         public Text finishText;
         public Vector3 spawnPosition;
         private bool finished = false;
-        public GameObject resultPanel;
+        public FinishPanel resultPanel;
 
         internal void Awake()
         {
@@ -49,6 +49,7 @@ namespace Gameplay.controllers
         internal void Spawn(GameObject g, Vector3 position)
         {
             GameObject i = Instantiate(g,position, new Quaternion(0,0,0,0));
+            i.tag = "Player";
             InitializePlayer(i.GetComponentInChildren<Player>());
         }
 
@@ -104,13 +105,19 @@ namespace Gameplay.controllers
             player.finished = true;
             this.finished = true;
             SetFinishTime(time, player);
-            if (!typeof(NPC).IsInstanceOfType(player)) ShowResultPanel();
-            //SceneSelector.goToResultList();
+            if (player.transform.parent.CompareTag("Player")) ShowResultPanel();
+            
         }
 
         public void ShowResultPanel()
         {
-            resultPanel.SetActive(true);
+            try
+            {
+                resultPanel = GameObject.FindObjectOfType<FinishPanel>(true);
+               
+                resultPanel.gameObject.SetActive(true);
+            }
+            catch { }
         }
 
         private void SetFinishTime(float time, Player player)

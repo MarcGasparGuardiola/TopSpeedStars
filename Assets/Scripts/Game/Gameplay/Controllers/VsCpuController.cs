@@ -61,7 +61,7 @@ namespace Gameplay.controllers
             // TODO finish the race
             
             SetFinishTime(player, time);
-            ShowResultPanel();
+            if (player.transform.parent.CompareTag("Player")) ShowResultPanel();
             //SceneSelector.goToResultList();
         }
 
