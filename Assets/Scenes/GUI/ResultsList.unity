@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -335,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 679, y: 424}
+  m_AnchoredPosition: {x: 258, y: -130}
   m_SizeDelta: {x: 313.9605, y: 59.3259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521909729
@@ -382,16 +382,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 641715584}
-        m_TargetAssemblyTypeName: TestFunctions, Assembly-CSharp
-        m_MethodName: addPlayerToFinishList
-        m_Mode: 1
+      - m_Target: {fileID: 1350948966}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: FadeToLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PlaneSelectionScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &521909730
@@ -893,7 +893,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add Player
+  m_Text: Main Menu
 --- !u!222 &1211599055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -982,6 +982,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1350948964}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1350948966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7041451751833266535, guid: b94f7ae6c63131247903c3b66b2bab93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350948964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880f018ed46b84e48aa5c73c1c2c3103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1373015333
 GameObject:
   m_ObjectHideFlags: 0
