@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Gameplay.actors;
 using System;
+using Gameplay.controllers;
 
 namespace Gameplay.controllers
 {
@@ -14,6 +15,7 @@ namespace Gameplay.controllers
         public List<CheckPoint> checkPoints;
         public float time = 0f;
         public Text timeText;
+
         public Text finishText;
         public Vector3 spawnPosition;
         private bool finished = false;
@@ -26,6 +28,7 @@ namespace Gameplay.controllers
             goal = FindObjectOfType<Goal>();
             finishText = GameObject.FindGameObjectWithTag("FinishText").GetComponent<Text>();
         }
+
 
         void Start()
         {
@@ -102,11 +105,12 @@ namespace Gameplay.controllers
         private void Finish(Player player)
         {
             // TODO finish the race
+
             player.finished = true;
             this.finished = true;
             SetFinishTime(time, player);
             if (player.transform.parent.CompareTag("Player")) ShowResultPanel();
-            
+            ResultScene.addTime(player.username, time);
         }
 
         public void ShowResultPanel()
@@ -135,6 +139,13 @@ namespace Gameplay.controllers
                 float sec = time % 60;
                 timeText.text = String.Format("{0:00}:{1}", min, sec.ToString());
             }
+        }
+
+        public void toResult()
+        {
+            GameObject go = GameObject.Find("LevelChanger");
+            LevelChanger other = (LevelChanger)go.GetComponent(typeof(LevelChanger));
+            other.FadeToLevel("ResultsList");
         }
 
     }

@@ -7,17 +7,13 @@ namespace Gameplay.actors
 {
     public class Player : MonoBehaviour
     {
-        //[SerializeField] private Consumable item = null;
         [SerializeField] internal string username = ""; // For future instances where the player's username is displayed
         [SerializeField] private ConsumableHud cHud = null;
-
         public CheckPoint check = null;
-
         public Consumable item = null;
-
         public RaceController raceController = null;
         public PointerController pointer;
-        float time;
+        public float time;
         public bool finished = false;
         
 
@@ -110,7 +106,6 @@ namespace Gameplay.actors
             check = c;
             pointer.SetCheck(check);
         }
-        
     }
 
 }
