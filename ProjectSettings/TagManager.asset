@@ -9,6 +9,11 @@ TagManager:
   - Collision
   - Row
   - List
+  - PlayerSelection
+  - TimeText
+  - FinishText
+  - Spawn
+  - FinishPanel
   layers:
   - Default
   - TransparentFX

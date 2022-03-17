@@ -109,7 +109,7 @@ public class Login : MonoBehaviour
                     Debug.Log(pages[page] + ":\nReceived: " + www.downloadHandler.text);
                     Token token = GameObject.Find("Token").GetComponent<Token>();
                     token.setToken(www.downloadHandler.text);
-                    SceneManager.LoadScene("SampleScene");
+                    SceneManager.LoadScene("PlaneSelectionScene");
                     break;
             }
         }

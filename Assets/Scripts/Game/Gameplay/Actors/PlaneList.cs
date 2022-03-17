@@ -6,7 +6,6 @@ public class PlaneList : MonoBehaviour
 {
 
     public static List<PlaneStatistics> planesStatistics = new List<PlaneStatistics>();
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +20,8 @@ public class PlaneList : MonoBehaviour
             // Debug purposes
             foreach (PlaneStatistics plane in planesStatistics)
             {
-                Debug.Log(plane.name);
+                Debug.Log(plane.ToString());
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 }
