@@ -8,10 +8,6 @@ namespace Gameplay.actors
     public class Player : MonoBehaviour
     {
         [SerializeField] public string name = ""; // For future instances where the player's username is displayed
-=======
-        //[SerializeField] private Consumable item = null;
-        [SerializeField] private string name = ""; // For future instances where the player's username is displayed
->>>>>>> origin
         [SerializeField] private ConsumableHud cHud = null;
         [SerializeField] private Consumable item = null;
         internal CheckPoint check = null;

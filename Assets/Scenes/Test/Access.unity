@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -735,6 +735,8 @@ MonoBehaviour:
   mailInput: {fileID: 1748006491}
   passwordInput: {fileID: 2083727352}
   invalidCredencialsMessage: {fileID: 483292739}
+  loadingImage: {fileID: 0}
+  rotateSpeed: 200
 --- !u!1 &882174574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,8 +1539,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2083727355}
   m_TextComponent: {fileID: 52056282}
   m_Placeholder: {fileID: 882174576}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
