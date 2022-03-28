@@ -19,12 +19,26 @@ public class RoomManager : MonoBehaviourPunCallbacks
     float roomUpdateInterval = 1.5f;
     float nexUpdateTime;
 
+    public List<PlayerItem> playerItems = new List<PlayerItem>();
+    public PlayerItem playerCardPrefab;
+    public Transform listParent;
+
     private void Start()
     {
         PhotonNetwork.JoinLobby();
+        PhotonNetwork.LocalPlayer.NickName = "Jordi";
     }
 
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("ConnectToMaster");
+        PhotonNetwork.JoinLobby();
+    }
 
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+    }
 
     public void CreateRoom()
     {
@@ -32,21 +46,26 @@ public class RoomManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CreateRoom(roomField.text, new RoomOptions() { MaxPlayers = 3 }); 
         }
     }
+
     public void JoinRoom(string roomName)
-    {
-        if (roomField.text.Length >= 1)  PhotonNetwork.JoinRoom(roomName);
+    { 
+        Debug.Log(roomName);
+        Debug.Log(PhotonNetwork.JoinRoom(roomName));
     }
+
     public void OnClickedLeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
     }
 
-
     public override void OnJoinedRoom()
     {
+        Debug.Log("JoinedRoom");
+
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = PhotonNetwork.CurrentRoom.Name;
+        UpdatePlayerList();
     }
 
     public override void OnLeftRoom()
@@ -55,13 +74,18 @@ public class RoomManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(true);
     }
 
-    public override void OnConnectedToMaster()
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        PhotonNetwork.JoinLobby();
+        UpdatePlayerList();
+    }
+    public override void OnPlayerLeftRoom(Player newPlayer)
+    {
+        UpdatePlayerList();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log(roomList.ToStringFull());
         if (Time.time >= nexUpdateTime)
         {
             UpdateRoomList(roomList);
@@ -82,6 +106,28 @@ public class RoomManager : MonoBehaviourPunCallbacks
             RoomItem nRoom = Instantiate(roomItemPrefab, contentObject);
             nRoom.SetRoomName(room.Name);
             roomItems.Add(nRoom);
+        }
+    }
+
+    void UpdatePlayerList()
+    {
+        foreach (PlayerItem item in playerItems)
+        {
+            Destroy(item.gameObject);
+        }
+        playerItems.Clear();
+
+        if (PhotonNetwork.CurrentRoom == null) return;
+        // redundant naming scheme to differentiate Photon.Realtime.Player from Gameplay.Actors.Player
+        foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
+        {
+            PlayerItem playerItem = Instantiate(playerCardPrefab, listParent);
+            playerItem.SetPlayerInfo(player.Value);
+            if (player.Value == PhotonNetwork.LocalPlayer)
+            {
+                playerItem.HighlightLocalPlayer();
+            }
+            playerItems.Add(playerItem);
         }
     }
 }
