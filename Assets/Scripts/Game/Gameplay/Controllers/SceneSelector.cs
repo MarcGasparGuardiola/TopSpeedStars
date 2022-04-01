@@ -32,4 +32,9 @@ public class SceneSelector : MonoBehaviour
         SceneManager.LoadScene("ResultsList");
 
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

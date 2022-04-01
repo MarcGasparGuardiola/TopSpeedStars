@@ -9,12 +9,14 @@ public class PanelManager : MonoBehaviour
     public GameObject gameModePanel;
     public GameObject raceSelectPanel;
     public GameObject planeSelectPanel;
+    public GameObject optionsPanel;
 
     void DisableAll()
     {
         gameModePanel.SetActive(false);
         raceSelectPanel.SetActive(false);
         planeSelectPanel.SetActive(false);
+        optionsPanel.SetActive(false);
     }
 
     public void ToModeSelect()
@@ -34,5 +36,10 @@ public class PanelManager : MonoBehaviour
     {
         DisableAll();
         planeSelectPanel.SetActive(true);
+    }
+    public void ToOptionsSelect()
+    {
+        DisableAll();
+        optionsPanel.SetActive(true);
     }
 }

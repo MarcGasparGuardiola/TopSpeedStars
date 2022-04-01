@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test/Access.unity
+    path: Assets/Scenes/GUI/Access.unity
     guid: ae840aa416b9b8c48a129c124a3fcc46
   - enabled: 1
     path: Assets/Scenes/GUI/PlaneSelectionScene.unity

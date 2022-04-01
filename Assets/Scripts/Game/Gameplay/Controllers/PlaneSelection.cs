@@ -10,7 +10,7 @@ public class PlaneSelection : MonoBehaviour
     public Character[] characters;
     public Text nameText; 
     public PlaneStatistics planeStatistics;
-    private int planeId;
+    public int planeId;
     public Character devChar;
     public static string selected;
 
@@ -41,15 +41,12 @@ public class PlaneSelection : MonoBehaviour
     public void OnPlaneSelect(int id)
     {
         planeId = id;
-        nameText.text = characters[id].name;
         GameplayManager.Instance.character = characters[id];
     }
 
     public void OnConfirmSelection()
     {
-        // TODO establish prefab dinamically
-        //GameObject newInstance = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
-        //newInstance.transform.GetComponentInChildren<Player>().character = devChar;
+
         StartCoroutine(LoadAsync("SampleScene"));
         
     }
@@ -65,8 +62,5 @@ public class PlaneSelection : MonoBehaviour
             yield return null;
         }
 
-        //SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(scene));
-
-        // SceneManager.UnloadSceneAsync(currentScene);
     }
 }
