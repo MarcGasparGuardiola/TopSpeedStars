@@ -8,7 +8,6 @@ public class PlaneSelection : MonoBehaviour
 {
     public GameObject prefab;
     public Character[] characters;
-    public Text nameText; 
     public PlaneStatistics planeStatistics;
     public int planeId;
     public Character devChar;

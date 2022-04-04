@@ -23,6 +23,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public PlayerItem playerCardPrefab;
     public Transform listParent;
 
+    public PlayerSelectManager psm;
+
     private void Start()
     {
         PhotonNetwork.JoinLobby();
@@ -66,6 +68,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         roomName.text = PhotonNetwork.CurrentRoom.Name;
         UpdatePlayerList();
+        psm.ShowPlane();
     }
 
     public override void OnLeftRoom()

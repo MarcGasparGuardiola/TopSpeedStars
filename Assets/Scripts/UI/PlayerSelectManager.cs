@@ -9,17 +9,18 @@ public class PlayerSelectManager : MonoBehaviour
     public Transform planeDisplay;
     public Text nameDisplay;
     public int id = 0;
+    public float scale = 5f;
 
    
 
     public void ShowPlane() 
     {
         HidePlane();
-        Debug.Log("show");
+        
         GameObject prefab = Resources.Load(planeSelection.characters[id].route) as GameObject;
         GameObject instance = Instantiate(prefab, planeDisplay);
-        instance.transform.localScale = Vector3.one * 5f;
-        planeSelection.OnPlaneSelect(id);
+        instance.transform.localScale = Vector3.one * scale; 
+        planeSelection.OnPlaneSelect(id); 
         nameDisplay.text = planeSelection.characters[id].characterName;
     }
 
@@ -40,7 +41,7 @@ public class PlayerSelectManager : MonoBehaviour
         {
             id = planeSelection.characters.Length - 1;
         }
-        
+        ShowPlane();
     }
     public void OnRightClicked() 
     {
@@ -49,6 +50,7 @@ public class PlayerSelectManager : MonoBehaviour
         {
             id = 0;
         }
+        ShowPlane();
     }
     public void OnBackClicked()
     {
