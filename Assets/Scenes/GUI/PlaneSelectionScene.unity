@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &369184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1045,7 +1045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &626207424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2869,7 +2869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1554057910
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3027,7 +3027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1688542402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3722,7 +3722,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 419a89377e39a6248a58f54a622529ce, type: 2}
   - {fileID: 11400000, guid: 664c1755b52ad2d4091d620355d86a1c, type: 2}
   - {fileID: 11400000, guid: 5f08a530d34f522438714c61bd869736, type: 2}
-  nameText: {fileID: 802361142}
   planeId: 0
   devChar: {fileID: 11400000, guid: 419a89377e39a6248a58f54a622529ce, type: 2}
 --- !u!114 &2086608435
@@ -3769,3 +3768,4 @@ MonoBehaviour:
   planeDisplay: {fileID: 1313009937}
   nameDisplay: {fileID: 802361142}
   id: 0
+  scale: 5

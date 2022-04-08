@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public GameObject lobbyPanel;
     public GameObject roomPanel;
     public Text roomName;
+    public InputField nameField;
+    public GameObject playButton;
 
     public RoomItem roomItemPrefab;
     List<RoomItem> roomItems = new List<RoomItem>();
@@ -24,11 +26,24 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public Transform listParent;
 
     public PlayerSelectManager psm;
+    public PlaneSelection planeSelection;
+
+
+    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
 
     private void Start()
     {
         PhotonNetwork.JoinLobby();
-        PhotonNetwork.LocalPlayer.NickName = "Jordi";
+        PhotonNetwork.LocalPlayer.NickName = "Default";
+
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        {
+            playButton.SetActive(true);
+        }
     }
 
     public override void OnConnectedToMaster()
@@ -45,7 +60,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         if (roomField.text.Length >= 1) { 
-            PhotonNetwork.CreateRoom(roomField.text, new RoomOptions() { MaxPlayers = 3 }); 
+            PhotonNetwork.CreateRoom(roomField.text, new RoomOptions() { MaxPlayers = 3, BroadcastPropsChangeToAll = true }); 
         }
     }
 
@@ -129,8 +144,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
             if (player.Value == PhotonNetwork.LocalPlayer)
             {
                 playerItem.HighlightLocalPlayer();
+                
             }
             playerItems.Add(playerItem);
         }
+    }
+
+    public void SetLocalPlayerPlane()
+    {
+        playerProperties["characterName"] = planeSelection.characters[planeSelection.planeId].characterName;
+        playerProperties["characterId"] = planeSelection.planeId;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
+
+    public void SetLocalNickname()
+    {
+        PhotonNetwork.LocalPlayer.NickName = nameField.text;
     }
 }
