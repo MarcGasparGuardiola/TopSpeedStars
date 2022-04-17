@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Gameplay.controllers;
 public class RaceManager : MonoBehaviour
 {
@@ -18,10 +19,10 @@ public class RaceManager : MonoBehaviour
                     transform.gameObject.AddComponent<VsCpuController>();
                     break;
                 case 2:
-                    // TODO multiplayer online
+                    transform.gameObject.AddComponent<OnlineController>();
                     break;
                 default:
-                    // TODO failsafe back to menu
+                    SceneManager.LoadScene("PlaneSelectionScene");
                     break;
             }
         }

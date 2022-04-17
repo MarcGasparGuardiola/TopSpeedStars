@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
@@ -31,14 +32,20 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuPanel.SetActive(true);
         // TODO dont pause when online
-        if (true)
+        if (PhotonNetwork.CurrentRoom == null)
         {
             Time.timeScale = 0f;
         }
         gameIsPaused = true;
     }
 
-    //TODO
-    public void LoadMenu() { }
-    public void QuitGame() { }
+    public void LoadMenu() 
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("ResultsList");
+    }
+    public void QuitGame() 
+    {
+        Application.Quit();
+    }
 }

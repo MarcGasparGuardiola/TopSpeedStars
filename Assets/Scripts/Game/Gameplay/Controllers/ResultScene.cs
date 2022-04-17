@@ -30,7 +30,7 @@ namespace Gameplay.controllers
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(finishedPlayers.Count);
+            //Debug.Log(finishedPlayers.Count);
 
             if (localCount != finishedPlayers.Count)
             {

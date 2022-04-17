@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay.actors;
+using Photon.Pun;
 
 namespace Gameplay.controllers
 {
@@ -10,15 +11,28 @@ namespace Gameplay.controllers
         public Player player;
         public CheckPoint currentCheck;
         public GameObject pointer;
+        public PhotonView view;
         // Update is called once per frame
 
         private void Start()
         {
             try
             {
+                player = transform.parent.GetComponentInChildren<Player>();
+                pointer = transform.parent.Find("Pointer").gameObject;
                 currentCheck = player.check;
             }
             catch { }
+            if (view == null)
+            {
+                view = transform.parent.GetComponentInChildren<PhotonView>();
+            }
+            if ((!view.IsMine) && PhotonNetwork.CurrentRoom != null)
+            {
+                pointer.SetActive(false);
+                this.enabled = false;
+            }
+               
         }
         void Update()
         {

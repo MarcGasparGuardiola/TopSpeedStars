@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
@@ -40,10 +41,34 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        // if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        if (PhotonNetwork.IsMasterClient)
         {
-            playButton.SetActive(true);
+            try
+            {
+                if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"]) {
+                    playButton.SetActive(CheckPlayersReady());
+                }
+            } catch { }
+                   
         }
+    }
+
+    private bool CheckPlayersReady()
+    {
+        Dictionary<int, Player> players = PhotonNetwork.CurrentRoom.Players;
+
+        foreach (Player p in players.Values)
+        {
+            try
+            {
+                if (!(bool)p.CustomProperties["isReady"]) return false;
+            } catch
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public override void OnConnectedToMaster()
@@ -160,5 +185,22 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public void SetLocalNickname()
     {
         PhotonNetwork.LocalPlayer.NickName = nameField.text;
+    }
+
+    public void OnReady()
+    {
+        playerProperties["isReady"] = true;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
+
+    public void OnClickPlay()
+    {
+        PhotonNetwork.LoadLevel("SampleScene");
+    }
+
+    public void Disconnect()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("PlaneSelectionScene");
     }
 }

@@ -159,6 +159,8 @@ GameObject:
   - component: {fileID: 8752814274354040944}
   - component: {fileID: 8215905648348112393}
   - component: {fileID: 8492434397821315596}
+  - component: {fileID: 5186893277419177201}
+  - component: {fileID: 6564117491180053643}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -236,6 +238,7 @@ MonoBehaviour:
   player: {fileID: 8492434397821315596}
   currentCheck: {fileID: 0}
   pointer: {fileID: 5853833588909667395}
+  view: {fileID: 0}
 --- !u!114 &8492434397821315596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,13 +251,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9641734e0159f468be2f3cf87a1ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  name: 
+  username: 
   cHud: {fileID: 0}
   check: {fileID: 0}
+  item: {fileID: 0}
   raceController: {fileID: 0}
   pointer: {fileID: 8215905648348112393}
-  finishText: {fileID: 0}
+  time: 0
+  finished: 0
+  character: {fileID: 0}
+--- !u!114 &5186893277419177201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655866941554452363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6564117491180053643}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6564117491180053643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655866941554452363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1001 &1706064624395458898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +428,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 8390099928272876520}
+    - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: view
+      value: 
+      objectReference: {fileID: 5186893277419177201}
     - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
       propertyPath: aircraft

@@ -7,9 +7,9 @@ public class LevelChanger : MonoBehaviour
     private string levelToLoad;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        animator = FindObjectOfType<Animator>();
     }
 
     public void FadeToLevel(string lavelName)
@@ -19,6 +19,7 @@ public class LevelChanger : MonoBehaviour
     }
 
     public void OnFadeComplete() {
+        Debug.Log(levelToLoad);
         SceneManager.LoadScene(levelToLoad);
     }
 }

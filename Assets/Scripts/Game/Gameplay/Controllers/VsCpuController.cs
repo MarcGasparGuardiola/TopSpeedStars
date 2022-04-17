@@ -25,7 +25,7 @@ namespace Gameplay.controllers
             Spawn(instance, spawnPoints[0].transform.position);
             SpawnShips();
         }
-        void GetSpawnPoints()
+        public void GetSpawnPoints()
         {
             spawnPoints = FindObjectsOfType<SpawnPoint>();
             Array.Sort(spawnPoints, delegate (SpawnPoint x, SpawnPoint y)
@@ -34,7 +34,7 @@ namespace Gameplay.controllers
                 }
             );
         }
-        void SpawnShips()
+        public void SpawnShips()
         {
             GameObject ship = Resources.Load<GameObject>("Prefabs/NPC");
             for(int i = 1; i < spawnPoints.Length; ++i)
@@ -65,7 +65,7 @@ namespace Gameplay.controllers
             //SceneSelector.goToResultList();
         }
 
-        private void SetFinishTime( Player player,float time)
+        private void SetFinishTime(Player player,float time)
         {
             Debug.Log("SetFinishTIme");
             if (!player.finished)

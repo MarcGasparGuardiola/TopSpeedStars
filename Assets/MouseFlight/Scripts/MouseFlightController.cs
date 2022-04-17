@@ -4,6 +4,7 @@
 //
 
 using UnityEngine;
+using Photon.Pun;
 
 namespace MFlight
 {
@@ -79,6 +80,8 @@ namespace MFlight
             }
         }
 
+        public PhotonView view;
+
         private void Awake()
         {
             // To work correctly, the entire rig must not be parented to anything.
@@ -86,13 +89,24 @@ namespace MFlight
             // rotations causing unintended rotations as it gets dragged around.
             transform.parent = null;
         }
+        private void Start()
+        {
+            if (view == null)
+            {
+                view = transform.parent.GetComponentInChildren<PhotonView>();
+            }
+        }
 
         private void Update()
         {
+           
             if (useFixed == false)
                 UpdateCameraPos();
-
-            RotateRig();
+            if (view.IsMine || PhotonNetwork.CurrentRoom == null)
+            {
+                RotateRig();
+            }
+          
         }
 
         private void FixedUpdate()

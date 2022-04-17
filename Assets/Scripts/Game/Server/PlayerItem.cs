@@ -11,6 +11,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Text planeName;
     public Image background;
     public Color highlight;
+    public GameObject check;
 
     Player player;
 
@@ -45,5 +46,15 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             planeName.text = ( player.CustomProperties["characterName"].ToString());
         }
+        if (player.CustomProperties.ContainsKey("isReady"))
+        {
+            // TODO set checkmark
+            if ((bool)player.CustomProperties["isReady"])
+            {
+                check.SetActive(true);
+            }
+            
+        }
+
     }
 }
