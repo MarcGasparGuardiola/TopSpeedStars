@@ -4,6 +4,8 @@
 //
 
 using UnityEngine;
+using Photon.Pun;
+
 
 namespace MFlight.Demo
 {
@@ -50,6 +52,8 @@ namespace MFlight.Demo
         private bool rollOverride = false;
         private bool pitchOverride = false;
 
+        public PhotonView view;
+
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
@@ -66,35 +70,37 @@ namespace MFlight.Demo
 
         private void Update()
         {
-            // When the player commands their own stick input, it should override what the
-            // autopilot is trying to do.
-            rollOverride = false;
-            pitchOverride = false;
+            if (view.IsMine || PhotonNetwork.CurrentRoom == null) { 
+                // When the player commands their own stick input, it should override what the
+                // autopilot is trying to do.
+                rollOverride = false;
+                pitchOverride = false;
 
-            float keyboardRoll = Input.GetAxis("Horizontal");
-            if (Mathf.Abs(keyboardRoll) > .25f)
-            {
-                rollOverride = true;
+                float keyboardRoll = Input.GetAxis("Horizontal");
+                if (Mathf.Abs(keyboardRoll) > .25f)
+                {
+                    rollOverride = true;
+                }
+
+                float keyboardPitch = Input.GetAxis("Vertical");
+                if (Mathf.Abs(keyboardPitch) > .25f)
+                {
+                    pitchOverride = true;
+                    rollOverride = true;
+                }
+
+                // Calculate the autopilot stick inputs.
+                float autoYaw = 0f;
+                float autoPitch = 0f;
+                float autoRoll = 0f;
+                if (controller != null)
+                    RunAutopilot(controller.MouseAimPos, out autoYaw, out autoPitch, out autoRoll);
+
+                // Use either keyboard or autopilot input.
+                yaw = autoYaw;
+                pitch = (pitchOverride) ? keyboardPitch : autoPitch;
+                roll = (rollOverride) ? keyboardRoll : autoRoll;
             }
-
-            float keyboardPitch = Input.GetAxis("Vertical");
-            if (Mathf.Abs(keyboardPitch) > .25f)
-            {
-                pitchOverride = true;
-                rollOverride = true;
-            }
-
-            // Calculate the autopilot stick inputs.
-            float autoYaw = 0f;
-            float autoPitch = 0f;
-            float autoRoll = 0f;
-            if (controller != null)
-                RunAutopilot(controller.MouseAimPos, out autoYaw, out autoPitch, out autoRoll);
-
-            // Use either keyboard or autopilot input.
-            yaw = autoYaw;
-            pitch = (pitchOverride) ? keyboardPitch : autoPitch;
-            roll = (rollOverride) ? keyboardRoll : autoRoll;
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

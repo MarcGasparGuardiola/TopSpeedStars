@@ -128,7 +128,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log(roomList.ToStringFull());
+        
+        foreach (RoomInfo i in roomList)
+        {
+            Debug.Log(i.Name);
+        }
         if (Time.time >= nexUpdateTime)
         {
             UpdateRoomList(roomList);

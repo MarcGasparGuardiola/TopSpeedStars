@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Gameplay.hud;
 using Gameplay.controllers;
+using MFlight;
+using Photon.Pun;
 
 namespace Gameplay.actors
 {
@@ -17,9 +19,12 @@ namespace Gameplay.actors
         public PointerController pointer;
         public float time;
         public bool finished = false;
-        
+        public MouseFlightController mfc;
 
         public Character character;
+        public PhotonView view;
+        
+        
 
         // Start is called before the first frame update
 
@@ -30,11 +35,31 @@ namespace Gameplay.actors
         }
         void Start()
         {
-            if (GameplayManager.Instance != null)
+            // TODO accio online
+            // TODO casuistica offline
+            if (PhotonNetwork.CurrentRoom == null)
             {
-                character = GameplayManager.Instance.character;
+                if (GameplayManager.Instance != null)
+                {
+                    character = GameplayManager.Instance.character;
+                }
             }
-            
+            else if (view != null)
+            {
+                if (view.IsMine)
+                {
+                    /*int cId = (int)PhotonNetwork.LocalPlayer.CustomProperties["playerId"];
+
+                    // TODO get player charcter
+                    character = FindObjectOfType<CharacterList>().characters[cId];*/
+                }
+                else
+                {
+                    character = GameplayManager.Instance.character;
+
+                    Destroy(mfc.gameObject);
+                }
+            }
             GameObject prefab = Resources.Load(character.route) as GameObject;
             
             GameObject instance = Instantiate(prefab,transform);

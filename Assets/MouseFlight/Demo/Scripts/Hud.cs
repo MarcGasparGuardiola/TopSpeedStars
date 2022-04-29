@@ -4,6 +4,7 @@
 //
 
 using UnityEngine;
+using Photon.Pun;
 
 namespace MFlight.Demo
 {
@@ -18,15 +19,23 @@ namespace MFlight.Demo
 
         private Camera playerCam = null;
 
+        public PhotonView view;
+
         private void Awake()
         {
-            if (mouseFlight == null)
-                Debug.LogError(name + ": Hud - Mouse Flight Controller not assigned!");
+            if (view.IsMine || PhotonNetwork.CurrentRoom == null) { 
+                if (mouseFlight == null)
+                    Debug.LogError(name + ": Hud - Mouse Flight Controller not assigned!");
 
-            playerCam = mouseFlight.GetComponentInChildren<Camera>();
+                playerCam = mouseFlight.GetComponentInChildren<Camera>();
 
-            if (playerCam == null)
-                Debug.LogError(name + ": Hud - No camera found on assigned Mouse Flight Controller!");
+                if (playerCam == null)
+                    Debug.LogError(name + ": Hud - No camera found on assigned Mouse Flight Controller!");
+            } else
+            {
+                // Destroy(mouseFlight.GetComponentInChildren<Camera>());
+                // Destroy(this.gameObject);
+            }
         }
 
         private void Update()

@@ -11,7 +11,7 @@ public class GameplayManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
 

@@ -158,9 +158,9 @@ GameObject:
   - component: {fileID: 1262288132008569818}
   - component: {fileID: 8752814274354040944}
   - component: {fileID: 8215905648348112393}
-  - component: {fileID: 8492434397821315596}
   - component: {fileID: 5186893277419177201}
   - component: {fileID: 6564117491180053643}
+  - component: {fileID: 9004464740883492859}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -223,6 +223,7 @@ MonoBehaviour:
   pitch: 0
   yaw: 0
   roll: 0
+  view: {fileID: 5186893277419177201}
 --- !u!114 &8215905648348112393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,31 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411b94b201fb69f49b19f0e02fc3e055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8492434397821315596}
+  player: {fileID: 0}
   currentCheck: {fileID: 0}
   pointer: {fileID: 5853833588909667395}
   view: {fileID: 0}
---- !u!114 &8492434397821315596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655866941554452363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9641734e0159f468be2f3cf87a1ab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  username: 
-  cHud: {fileID: 0}
-  check: {fileID: 0}
-  item: {fileID: 0}
-  raceController: {fileID: 0}
-  pointer: {fileID: 8215905648348112393}
-  time: 0
-  finished: 0
-  character: {fileID: 0}
 --- !u!114 &5186893277419177201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +296,29 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &9004464740883492859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655866941554452363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9641734e0159f468be2f3cf87a1ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: 
+  cHud: {fileID: 0}
+  check: {fileID: 0}
+  item: {fileID: 0}
+  raceController: {fileID: 0}
+  pointer: {fileID: 8215905648348112393}
+  time: 0
+  finished: 0
+  mfc: {fileID: 1601964117085345200}
+  character: {fileID: 0}
+  view: {fileID: 5186893277419177201}
 --- !u!1001 &1706064624395458898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,6 +326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2486391500141655298}
     m_Modifications:
+    - target: {fileID: 1340265690153048, guid: 1ffc29c315992624cb793d6cbf2c4ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4543348934785170, guid: 1ffc29c315992624cb793d6cbf2c4ac1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.4
@@ -478,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Lens.FarClipPlane
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 1783689145842244619, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2373419192472169039, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -522,6 +534,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FollowOffset.z
       value: -135.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024709598543569831, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004546980038459661, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4422311419895381334, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
@@ -849,3 +871,4 @@ MonoBehaviour:
   mouseFlight: {fileID: 1601964117085345200}
   boresight: {fileID: 1491168513088910594}
   mousePos: {fileID: 1492601875159604440}
+  view: {fileID: 5186893277419177201}
