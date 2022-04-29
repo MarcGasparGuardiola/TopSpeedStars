@@ -43,6 +43,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameIsPaused = false;
+        if (PhotonNetwork.CurrentRoom != null)
+        {
+            PhotonNetwork.Disconnect();
+        }
         SceneManager.LoadScene("ResultsList");
     }
     public void QuitGame() 
