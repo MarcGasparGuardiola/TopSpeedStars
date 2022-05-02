@@ -158,6 +158,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void UpdatePlayerList()
     {
+        
         foreach (PlayerItem item in playerItems)
         {
             Destroy(item.gameObject);
@@ -165,24 +166,37 @@ public class RoomManager : MonoBehaviourPunCallbacks
         playerItems.Clear();
 
         if (PhotonNetwork.CurrentRoom == null) return;
+        int i = 0;
         // redundant naming scheme to differentiate Photon.Realtime.Player from Gameplay.Actors.Player
         foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             PlayerItem playerItem = Instantiate(playerCardPrefab, listParent);
             playerItem.SetPlayerInfo(player.Value);
+            PhotonNetwork.SetPlayerCustomProperties(playerProperties);
             if (player.Value == PhotonNetwork.LocalPlayer)
             {
                 playerItem.HighlightLocalPlayer();
                 
             }
             playerItems.Add(playerItem);
+            ++i;
         }
+    }
+
+    int GetPlayerId()
+    {
+        foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
+        {
+            if (player.Value == PhotonNetwork.LocalPlayer) return player.Key;
+        }
+        return 0;
     }
 
     public void SetLocalPlayerPlane()
     {
         playerProperties["characterName"] = planeSelection.characters[planeSelection.planeId].characterName;
         playerProperties["characterId"] = planeSelection.planeId;
+        playerProperties["playerId"] = GetPlayerId();
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 

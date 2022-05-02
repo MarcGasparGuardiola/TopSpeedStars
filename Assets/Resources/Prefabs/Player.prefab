@@ -317,6 +317,7 @@ MonoBehaviour:
   time: 0
   finished: 0
   mfc: {fileID: 1601964117085345200}
+  hud: {fileID: 1695526972604375447}
   character: {fileID: 0}
   view: {fileID: 5186893277419177201}
 --- !u!1001 &1706064624395458898

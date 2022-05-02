@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Gameplay.hud;
 using Gameplay.controllers;
 using MFlight;
+using MFlight.Demo;
 using Photon.Pun;
 
 namespace Gameplay.actors
@@ -20,6 +21,7 @@ namespace Gameplay.actors
         public float time;
         public bool finished = false;
         public MouseFlightController mfc;
+        public Hud hud;
 
         public Character character;
         public PhotonView view;
@@ -46,18 +48,11 @@ namespace Gameplay.actors
             }
             else if (view != null)
             {
-                if (view.IsMine)
-                {
-                    /*int cId = (int)PhotonNetwork.LocalPlayer.CustomProperties["playerId"];
-
-                    // TODO get player charcter
-                    character = FindObjectOfType<CharacterList>().characters[cId];*/
-                }
-                else
-                {
-                    character = GameplayManager.Instance.character;
-
+                character = FindObjectOfType<CharacterList>().characters[ (int)view.Owner.CustomProperties["characterId"]];
+                if (!view.IsMine)
+                { 
                     Destroy(mfc.gameObject);
+                    Destroy(hud.gameObject);
                 }
             }
             GameObject prefab = Resources.Load(character.route) as GameObject;
