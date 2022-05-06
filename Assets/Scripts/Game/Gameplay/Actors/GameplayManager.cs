@@ -1,26 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameplayManager : MonoBehaviour
-{
-    public static GameplayManager Instance;
-    public Character character;
-    public int playType;
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void SetPlayType(int type)
-    {
-        if (Instance != null) Instance.playType = type;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:84fa1e8e630d8dd3ea4879b5e970cf86e95675771e95ffcd587aa83d972a610b
+size 542

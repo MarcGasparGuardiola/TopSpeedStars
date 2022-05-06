@@ -1,28 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Gameplay.actors
-{
-    public class Goal : CheckPoint
-    {
-        private void Start()
-        {
-        }
-        // Update is called once per frame
-        void Update()
-        {
-        }
-        public new void Check()
-        {
-            
-            // TODO animation o algo
-            Debug.Log("Goal");
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d6f60b7ddd0606bf232e1a424e7362d47642f12ea1562382077be9ec2a5567a5
+size 510

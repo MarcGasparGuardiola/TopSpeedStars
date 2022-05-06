@@ -1,15 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Gameplay.actors
-{
-    // This interface must be implemented by every consumable. They must have a consume action
-    public abstract class Consumable : MonoBehaviour
-    {
-        public string NAME;
-        public abstract string GetName();
-        // This method will be activated when the player uses its item
-        public abstract void Consume(Player target);
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1b137b74795922d7856af22aad75d885650c869782461a0cae6d4c407b32ae12
+size 464
