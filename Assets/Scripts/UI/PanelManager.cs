@@ -42,4 +42,9 @@ public class PanelManager : MonoBehaviour
         DisableAll();
         optionsPanel.SetActive(true);
     }
+    
+    public void ModeSelect(int n)
+    {
+        FindObjectOfType<GameplayManager>().SetPlayType(n);
+    }
 }

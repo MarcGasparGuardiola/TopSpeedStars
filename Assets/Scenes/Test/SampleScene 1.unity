@@ -968,6 +968,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 5186893277419177201, guid: 261c069ab14ebc644b25d0c5a473eba3,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5737949104366518858, guid: 261c069ab14ebc644b25d0c5a473eba3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1579,7 +1584,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 114723599}
   checkPoints: []
+  time: 0
   timeText: {fileID: 1112566579}
+  finishText: {fileID: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+  resultPanel: {fileID: 0}
 --- !u!4 &1469894171
 Transform:
   m_ObjectHideFlags: 0

@@ -77,7 +77,6 @@ namespace Gameplay.actors
         {
             if (other.gameObject.CompareTag("PickUp"))
             {
-                
                 this.EnterPickUp(other);
             }
             if (other.gameObject.CompareTag("Checkpoint"))
@@ -119,8 +118,8 @@ namespace Gameplay.actors
         internal void SetConsumable()
         {
             // TODO random select consumible
-            item = this.gameObject.AddComponent<TurboConsumable>();
-            //cHud.SetConsumableIndicator(this.item);
+            item = this.gameObject.AddComponent<LaserConsumable>();
+            // cHud.SetConsumableIndicator(this.item);
         }
 
         internal void SetCheckpoint(CheckPoint c)

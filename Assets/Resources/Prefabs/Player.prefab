@@ -212,8 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1601964117085345200}
   maxVelocity: 1000
-  thrust: 700
-  acceleration: 5
+  thrust: 0
+  acceleration: 10
   dragRate: 30
   turnTorque: {x: 90, y: 25, z: 25}
   forceMult: 100

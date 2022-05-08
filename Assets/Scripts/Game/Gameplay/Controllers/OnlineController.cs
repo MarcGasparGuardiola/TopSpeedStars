@@ -48,11 +48,7 @@ namespace Gameplay.controllers
             player.raceController = this;
             player.SetCheckpoint(checkPoints[0]);
         }
-
-        void Getplayer()
-        {
-
-        }
+        
     }
 }
 

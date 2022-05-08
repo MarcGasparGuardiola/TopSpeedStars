@@ -5,7 +5,7 @@
 
 using UnityEngine;
 using Photon.Pun;
-
+using System.Collections;
 
 namespace MFlight.Demo
 {
@@ -27,6 +27,7 @@ namespace MFlight.Demo
         [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
         private float actualThrust = 0;
         [Tooltip("Acceleration of aircraft")] public float acceleration = 100f;
+        float ogAcceleration;
         [Tooltip("Drag of aircraft")] public float dragRate = 30f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
@@ -51,6 +52,7 @@ namespace MFlight.Demo
 
         private bool rollOverride = false;
         private bool pitchOverride = false;
+        public bool stopped = false;
 
         public PhotonView view;
 
@@ -63,15 +65,18 @@ namespace MFlight.Demo
 
             rigid.inertiaTensor = tensor;
             rigid.velocity = new Vector3(0, 0, 0);
-
+            ogAcceleration = acceleration;
 
             actualThrust = thrust;
         }
 
         private void Update()
         {
+            
             if (view.IsMine || PhotonNetwork.CurrentRoom == null) { 
-                // When the player commands their own stick input, it should override what the
+                if(Input.GetKeyDown(KeyCode.P)) StopPlane(5);
+
+                // When the player commands their own stick input, itxxx should override what the
                 // autopilot is trying to do.
                 rollOverride = false;
                 pitchOverride = false;
@@ -102,6 +107,23 @@ namespace MFlight.Demo
                 roll = (rollOverride) ? keyboardRoll : autoRoll;
             }
         }
+
+        public void StopPlane(float time)
+        {
+            if (!stopped) StartCoroutine(StopForTime(time));
+        }
+        IEnumerator StopForTime(float time)
+        {
+            stopped = true;
+            rigid.velocity = Vector3.zero;
+           
+            this.acceleration = 0;
+            yield return new WaitForSeconds(time);
+            acceleration = ogAcceleration;
+            stopped = false; 
+
+        }
+
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)
         {
