@@ -25,6 +25,7 @@ namespace Gameplay.actors
 
         public Character character;
         public PhotonView view;
+        public PlayerSound playerSound;
         
         
 
@@ -67,10 +68,21 @@ namespace Gameplay.actors
         private  void Update()
         {            
             // consume, TODO input adequat
-            if (Input.GetKeyDown(KeyCode.I))
+            if(view.IsMine || PhotonNetwork.CurrentRoom == null)
             {
-                UseItem();
+                if (Input.GetKeyDown(KeyCode.I))
+                {
+                    UseItem();
+                }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    playerSound.EngineSound();
+                } else
+                {
+                    playerSound.StopEngineSound();
+                }
             }
+            
         }
 
         internal void OnTriggerEnter(Collider other)
@@ -83,6 +95,11 @@ namespace Gameplay.actors
             {
                 this.EnterCheckpoint(other);
             }
+           
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+             playerSound.ImpactSound();
         }
 
         private void UseItem()
@@ -118,7 +135,7 @@ namespace Gameplay.actors
         internal void SetConsumable()
         {
             // TODO random select consumible
-            item = this.gameObject.AddComponent<LaserConsumable>();
+            item = this.gameObject.AddComponent<TurboConsumable>();
             // cHud.SetConsumableIndicator(this.item);
         }
 

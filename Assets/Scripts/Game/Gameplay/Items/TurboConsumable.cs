@@ -25,6 +25,7 @@ namespace Gameplay.actors
             Debug.Log("Item Used");
             Debug.Log(Vector3.forward * turboForce);
             StartCoroutine(StartTurbo(target));
+            target.playerSound.TurboSound();
         }
 
         IEnumerator StartTurbo(Player target)

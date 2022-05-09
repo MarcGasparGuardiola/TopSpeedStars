@@ -45,7 +45,7 @@ public class PlaneSelection : MonoBehaviour
 
     public void OnConfirmSelection()
     {
-
+        
         StartCoroutine(LoadAsync("SampleScene"));
         
     }
@@ -56,6 +56,7 @@ public class PlaneSelection : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
         Debug.Log("Loading");
         // Wait until the asynchronous scene fully loads
+        new WaitForSeconds(3);
         while (!asyncLoad.isDone)
         {
             yield return null;

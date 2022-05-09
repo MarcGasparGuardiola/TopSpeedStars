@@ -9,6 +9,7 @@ public class SceneSelector : MonoBehaviour
    public void goToScene(string scene)
     {
         Debug.Log("Clicked");
+        new WaitForSeconds(3);
         StartCoroutine(LoadAsync(scene));
         
         // SceneManager.LoadScene(scene, LoadSceneMode.Single);
@@ -19,6 +20,7 @@ public class SceneSelector : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         Debug.Log("Loading");
         // Wait until the asynchronous scene fully loads
+        
         while (!asyncLoad.isDone)
         {
             yield return null;
