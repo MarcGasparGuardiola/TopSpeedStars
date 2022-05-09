@@ -1,25 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class SceneSelector : MonoBehaviour
-{
-    // Start is called before the first frame update
-   public void goToPlaneSelectionScene()
-    {
-        Debug.Log("Clicked");
-        SceneManager.LoadScene("PlaneSelection");
-    }
-
-<<<<<<< HEAD
-    static public void goToFinishRaceScene()
-    {
-        SceneManager.LoadScene("ResultsList");
-=======
-    public static void goToResultList()
-    {
-        SceneManager.LoadScene("ResultList");
->>>>>>> origin
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:385667ba01ba1f089e4d01327bd65f852297edcd8fa86afc26fe30c2b39057b7
+size 948

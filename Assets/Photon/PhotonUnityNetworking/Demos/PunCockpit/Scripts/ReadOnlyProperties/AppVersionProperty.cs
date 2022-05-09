@@ -1,32 +1,3 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AppVersionProperty.cs" company="Exit Games GmbH">
-//   Part of: Pun Cockpit
-// </copyright>
-// <author>developer@exitgames.com</author>
-// --------------------------------------------------------------------------------------------------------------------
-
-using UnityEngine;
-using UnityEngine.UI;
-
-namespace Photon.Pun.Demo.Cockpit
-{
-    /// <summary>
-    /// PhotonNetwork.AppVersion UI property.
-    /// </summary>
-    public class AppVersionProperty : MonoBehaviour
-    {
-
-        public Text Text;
-
-        string _cache;
-
-        void Update()
-        {
-            if (PhotonNetwork.AppVersion != _cache)
-            {
-                _cache = PhotonNetwork.AppVersion;
-                Text.text = _cache;
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c9999eef9fe2e6f8a4cd7e194780a508e9cac5064cb407d92ff1c24e7081436c
+size 887

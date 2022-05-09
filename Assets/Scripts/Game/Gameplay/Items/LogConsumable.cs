@@ -1,25 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Gameplay.actors
-{
-    public class LogConsumable : Consumable
-    {
-        public LogConsumable()
-        {
-            this.NAME = "LogConsumable";
-            // Debug.Log("Item Created");
-        }
-        override public string GetName()
-        {
-            return this.NAME;
-        }
-        override public void Consume(Player target)
-        {
-            Debug.Log("Item Used");
-            target.GetComponent<Rigidbody>().transform.position = new Vector3(0,0,0);
-        }
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:ae5ea281c21f9d8452a2b4ef6779aa1515f80b7909e4eb1dc1db98c15372398c
+size 586

@@ -1,33 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Photon.Pun;
-
-namespace Gameplay.actors
-{
-    public class LaserConsumable : Consumable
-    {
-        public LaserConsumable()
-        {
-            this.NAME = "LaserConsumable";
-        }
-        override public string GetName()
-        {
-            return this.NAME;
-        }
-
-        override public void Consume(Player target)
-        {
-            if (PhotonNetwork.CurrentRoom != null)
-            {
-                PhotonNetwork.Instantiate("Prefabs/Item/Laser", transform.position, transform.rotation);
-            } else
-            {
-                Debug.Log("Item Used");
-                GameObject g = Instantiate(Resources.Load("Prefabs/Item/Laser") as GameObject, transform.position, transform.rotation);
-                //g.GetComponent<Rigidbody>().AddForce( transform.rotation.eulerAngles * 0.01f);
-            }
-           
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4f0493f9946bcb3293088bb6743cddb29e1ea5081ac7109e762bec884f396c24
+size 949

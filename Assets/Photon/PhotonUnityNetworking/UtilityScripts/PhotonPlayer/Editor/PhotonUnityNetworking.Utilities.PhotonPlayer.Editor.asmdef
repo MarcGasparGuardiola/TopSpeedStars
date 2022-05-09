@@ -1,15 +1,3 @@
-{
-    "name": "PhotonUnityNetworking.Utilities.PhotonPlayer.Editor",
-    "references": [
-        "PhotonRealtime",
-        "PhotonUnityNetworking",
-        "PhotonUnityNetworking.Utilities",
-		 "PhotonUnityNetworking.Editor"
-    ],
-    "optionalUnityReferences": [],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1b10f10b656926d5af38a6f9f9267f2aa7dc300f4a1833da227b20d000efae20
+size 375

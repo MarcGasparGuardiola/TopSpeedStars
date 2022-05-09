@@ -1,30 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using Gameplay.controllers;
-public class RaceManager : MonoBehaviour
-{
-
-    void Start()
-    {
-        if (GameplayManager.Instance != null)
-        {
-            switch (GameplayManager.Instance.playType)
-            {
-                case 0:
-                    transform.gameObject.AddComponent<RaceController>();
-                    break;
-                case 1:
-                    transform.gameObject.AddComponent<VsCpuController>();
-                    break;
-                case 2:
-                    transform.gameObject.AddComponent<OnlineController>();
-                    break;
-                default:
-                    SceneManager.LoadScene("PlaneSelectionScene");
-                    break;
-            }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fdfb52f78b780673145b164328d730c14955ce70e6ebae7462ff01235338ec0c
+size 877

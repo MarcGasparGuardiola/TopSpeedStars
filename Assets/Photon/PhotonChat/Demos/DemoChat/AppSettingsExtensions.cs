@@ -1,30 +1,3 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Exit Games GmbH"/>
-// <summary>Demo code for Photon Chat in Unity.</summary>
-// <author>developer@exitgames.com</author>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-using Photon.Realtime;
-
-
-namespace Photon.Chat.Demo
-{
-    public static class AppSettingsExtensions
-    {
-        public static ChatAppSettings GetChatSettings(this AppSettings appSettings)
-        {
-            return new ChatAppSettings
-                   {
-                       AppIdChat = appSettings.AppIdChat,
-                       AppVersion = appSettings.AppVersion,
-                       FixedRegion = appSettings.IsBestRegion ? null : appSettings.FixedRegion,
-                       NetworkLogging = appSettings.NetworkLogging,
-                       Protocol = appSettings.Protocol,
-                       EnableProtocolFallback = appSettings.EnableProtocolFallback,
-                       Server = appSettings.IsDefaultNameServer ? null : appSettings.Server,
-                       Port = (ushort)appSettings.Port
-                   };
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1ad9c9244f9e5f1c01bf1137b6c32eda133b9b33f71b9880260d5d3ae28670e5
+size 1258

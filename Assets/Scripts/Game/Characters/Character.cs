@@ -1,14 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[CreateAssetMenu (menuName = "Character")]
-public class Character : ScriptableObject
-{
-    public string characterName = "empty";
-    public string description;
-    public int speed;
-    public int weight;
-    public int mannuver;
-    public string route;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:56238d4929883b6cf44fd29978e2379e4c3ec7a98cbd321f0280bc5328d70be4
+size 338

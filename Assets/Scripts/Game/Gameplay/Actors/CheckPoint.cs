@@ -1,22 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Gameplay.controllers;
-
-namespace Gameplay.actors
-{
-
-    public class CheckPoint : MonoBehaviour
-    {
-        public RaceController raceController;
-        public int id;
-        public void Check()
-        {
-            // TODO canviar color
-            Debug.Log("Checkpoint");
-
-        }
-    }
-    
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:e15d15d46dd1b3a268f8b79ccd8287ddf11858fe9842075ae68671956d4ea670
+size 390

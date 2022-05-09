@@ -1,23 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Gameplay.actors;
-
-namespace Gameplay.hud
-{
-    public class ConsumableHud:MonoBehaviour
-    {
-        [SerializeField] private Text consumableIndicator = null;
-
-        public void SetConsumableIndicator(Consumable item)
-        {
-            if (this.consumableIndicator != null)
-            {
-                // TODO change from name to image
-                this.consumableIndicator.GetComponent<Text>().text = item.GetName();
-            }
-        }
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:13ef573f28ed7d5cbef2b1f434a6ebf4961819972e0a99b4095a1a9c3ca98719
+size 570

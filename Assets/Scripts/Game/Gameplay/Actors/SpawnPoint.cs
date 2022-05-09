@@ -1,13 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SpawnPoint : MonoBehaviour
-{
-    [SerializeField]  public int id;
-    public Vector3 position;// optional reposicionar en start?
-    void Start()
-    {
-        
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2354355dc9c6eb77d1ca8a60993441bd60eaaad42851f2c2412d247a7a67822c
+size 262
