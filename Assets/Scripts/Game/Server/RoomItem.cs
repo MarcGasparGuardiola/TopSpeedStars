@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:42800b9ceb08ec2ce2d611c7fc82d10a90e17a700f846884de0e53101a89d3a3
-size 458
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class RoomItem : MonoBehaviour
+{
+    public Text roomName;
+    public RoomManager manager;
+
+    private void Start()
+    {
+        manager = FindObjectOfType<RoomManager>();
+    }
+    public void SetRoomName(string name)
+    {
+        roomName.text = name;
+    }
+
+    public void OnClickItem()
+    {
+        manager.JoinRoom(roomName.text);
+    }
+}
